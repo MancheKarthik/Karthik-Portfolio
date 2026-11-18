@@ -132,8 +132,7 @@ export function Hero({ ready }: { ready: boolean }) {
           </p>
 
           <p className="hero-sub hero__lead">
-            I build full-stack web apps with Next.js, automate the repetitive parts with Python, and turn raw data into
-            dashboards people actually use.
+            this is test
           </p>
 
           <div className="hero-cta">
