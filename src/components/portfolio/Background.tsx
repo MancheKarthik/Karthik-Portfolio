@@ -7,10 +7,6 @@ import { INVERT_ICONS, deviconUrl, techIcons } from "@/data/portfolio"
 const INVERT = INVERT_ICONS
 const FLOATERS = techIcons.slice(0, 18)
 
-/**
- * Fixed background: drifting gradient orbs that react to the pointer, a subtle grid and
- * tech logos rising endlessly with randomised GSAP tweens.
- */
 export function Background() {
   const root = useRef<HTMLDivElement>(null)
 
@@ -19,9 +15,6 @@ export function Background() {
       const mm = gsap.matchMedia()
 
       mm.add(MOTION_OK, () => {
-        // Rising logos — endless loops. fromTo pins the start below the viewport on every
-        // repeat, each lap picks a new column/spin, and each loop starts at a random point
-        // so the screen is populated from the first frame instead of waiting for delays.
         gsap.utils.toArray<HTMLElement>(".floater").forEach((el) => {
           const newLane = () =>
             gsap.set(el, { left: `${gsap.utils.random(0, 95)}%`, scale: gsap.utils.random(0.6, 1.3) })
@@ -50,7 +43,6 @@ export function Background() {
           })
         })
 
-        // Orbs wander on their own…
         gsap.utils.toArray<HTMLElement>(".orb").forEach((orb) => {
           gsap.to(orb, {
             xPercent: "random(-40, 40)",
@@ -63,7 +55,6 @@ export function Background() {
           })
         })
 
-        // …and lean towards the pointer.
         const layer = root.current!.querySelector(".orb-layer")
         const toX = gsap.quickTo(layer, "x", { duration: 2, ease: "power2" })
         const toY = gsap.quickTo(layer, "y", { duration: 2, ease: "power2" })
@@ -81,15 +72,12 @@ export function Background() {
   return (
     <div ref={root} className="bg-scene" aria-hidden="true">
       <div className="orb-layer">
-        {/* Soft glows drawn with radial gradients: same look as a heavy blur filter, but
-            they composite as plain textures instead of re-running the blur every frame. */}
         <div className="orb orb--gold" />
         <div className="orb orb--orange" />
         <div className="orb orb--rose" />
       </div>
       <div className="bg-grid bg-scene__grid" />
       {FLOATERS.map(({ slug, name, variant }) => (
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           key={slug}
           src={deviconUrl(slug, variant)}

@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Fixed background: glowing orbs, faint grid and rising tech logos (Background.tsx).
 .bg-scene {
   @include fill;
   position: fixed;

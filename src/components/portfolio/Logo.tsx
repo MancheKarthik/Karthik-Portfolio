@@ -5,10 +5,6 @@ import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap"
 
 const NAME = "Karthik"
 
-/**
- * Solid wordmark. Letters rise out of a mask when the preloader lifts; on hover each
- * letter rolls up to reveal a gradient copy underneath, and the accent dot pops.
- */
 export function Logo({ ready, onClick }: { ready: boolean; onClick: (e: React.MouseEvent) => void }) {
   const root = useRef<HTMLAnchorElement>(null)
 
@@ -29,7 +25,13 @@ export function Logo({ ready, onClick }: { ready: boolean; onClick: (e: React.Mo
   const roll = contextSafe((up: boolean) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     gsap.to(".logo-roll", {
-      yPercent: up ? -100 : 0,
+      y: (_i, el) => {
+        if (!up) return 0
+        const roll = el as HTMLElement
+        const hover = roll.querySelector(".logo__glyph--hover") as HTMLElement
+        const extra = hover.getBoundingClientRect().top - roll.getBoundingClientRect().bottom
+        return -(roll.offsetHeight + extra)
+      },
       stagger: { each: 0.025, from: up ? "start" : "end" },
       duration: 0.5,
       ease: "power3.inOut",

@@ -16,7 +16,6 @@ export function Projects() {
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
-      // Desktop: cards rise in a staggered wave as the grid arrives.
       mm.add(`(min-width: 1024px) and ${MOTION_OK}`, () => {
         gsap.from(".project-card", {
           y: 80,
@@ -29,16 +28,10 @@ export function Projects() {
         })
       })
 
-      // Mobile / tablet: a deck being dealt. Each card pins a little lower than the one before
-      // (so earlier cards peek out above), and as the next card slides up over it, the card
-      // underneath shrinks, tilts back and darkens. GSAP pins rather than CSS sticky, because
-      // ScrollSmoother moves the page with transforms, which breaks position: sticky.
       mm.add(`(max-width: 1023px) and ${MOTION_OK}`, () => {
         const cards = gsap.utils.toArray<HTMLElement>(".project-card")
         const last = cards.length - 1
         const head = root.current!.querySelector<HTMLElement>(".projects-head")!
-        // The heading pins just under the nav; the cards pin just under its title, so they
-        // slide up over the subtitle while the eyebrow and title stay in view.
         const headTop = () => (document.querySelector<HTMLElement>(".site-nav")?.offsetHeight ?? 64) + 8
         const titleBottom = () => {
           const h2 = head.querySelector("h2")!
@@ -81,7 +74,6 @@ export function Projects() {
             .to(card.querySelector(".stack-shade"), { opacity: 0.55, ease: "none" }, 0)
         })
 
-        // First card deals in as the section arrives.
         gsap.from(cards[0], {
           y: 60,
           autoAlpha: 0,
@@ -91,7 +83,6 @@ export function Projects() {
         })
       })
 
-      // Pointer tilt on every card (fine pointers only).
       mm.add(`(pointer: fine) and ${MOTION_OK}`, () => {
         const cleanups = gsap.utils.toArray<HTMLElement>(".project-card").map((card) => {
           const inner = card.querySelector<HTMLElement>(".project-inner")!
@@ -140,7 +131,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article className="project-card" data-cursor={project.link ? "View" : undefined}>
       <div className="project-inner">
-        {/* Darkens a card as the next one stacks over it (mobile). */}
         <span className="stack-shade" aria-hidden="true" />
         <div className="project-media">
           {project.image ? (
@@ -223,7 +213,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 const COVER_ICONS = [BarChart3, CloudRain, Map]
 
-/** Generated cover for projects without a screenshot: gradient, grid and a big icon. */
 function ProjectCover({ project, index }: { project: Project; index: number }) {
   const Icon = COVER_ICONS[index % COVER_ICONS.length]
   return (

@@ -8,7 +8,6 @@ import { SectionHeading } from "./SectionHeading"
 import { AboutStories } from "./AboutStories"
 import { LINES, MOTTO, pillars, stack, strengths } from "./aboutData"
 
-
 export function About() {
   const root = useRef<HTMLElement>(null)
 
@@ -16,14 +15,11 @@ export function About() {
     () => {
       const mm = gsap.matchMedia()
 
-      // Desktop only: phones get the Stories format (AboutStories) instead.
       mm.add(
         `(min-width: 1024px) and ${MOTION_OK}`,
         () => {
           const lines = gsap.utils.toArray<HTMLElement>(".code-line")
 
-          // ── Scene: each line types out (stepped clip = one character per step), then the
-          //    part of the card it describes renders. Pinned and scroll-scrubbed.
           gsap.set(lines, { clipPath: "inset(0% 100% 0% 0%)" })
           gsap.set(".card-step", { autoAlpha: 0, y: 18 })
           gsap.set(".profile-card", { autoAlpha: 0.35, scale: 0.96 })
@@ -43,7 +39,6 @@ export function About() {
               scene.from(".stack-logo", { y: 24, rotate: -20, stagger: 0.07, duration: 0.4, ease: "back.out(2)" }, "<")
           })
 
-          // The closing brace "compiles" the card.
           scene
             .to(".status-compiling", { autoAlpha: 0, duration: 0.2 })
             .to(".status-compiled", { autoAlpha: 1, duration: 0.2 }, "<")
@@ -56,7 +51,6 @@ export function About() {
             )
             .from(".motto-underline", { scaleX: 0, duration: 0.5, ease: "power2.inOut" }, "<")
 
-          // ── Bio: words light up as the paragraph scrolls through the viewport.
           SplitText.create(".about-copy", {
             type: "words",
             autoSplit: true,
@@ -73,8 +67,6 @@ export function About() {
               ),
           })
 
-          // ── Process: the path draws across Design → Develop → Deliver; each step lights up
-          //    as the line reaches it.
           const process = gsap.timeline({
             scrollTrigger: { trigger: ".process", start: "top 75%", end: "bottom 60%", scrub: 0.8 },
           })
@@ -96,12 +88,9 @@ export function About() {
       <div className="about__inner">
         <SectionHeading eyebrow="01 / Who I am" lead="About" accent="Me" />
 
-        {/* Phones and tablets: About as swipeable stories. */}
         <AboutStories />
 
-        {/* Desktop: the pinned code-to-card scene, bio and process. */}
         <div className="about-desktop">
-        {/* Scene: the code on the left renders the card on the right, one line at a time. */}
         <div className="about-scene">
           <div
             className="code-card"
@@ -130,7 +119,6 @@ export function About() {
             </pre>
           </div>
 
-          {/* The rendered output. */}
           <div className="about__output">
             <div
               className="profile-glow"
@@ -176,7 +164,6 @@ export function About() {
                     title={name}
                     className="stack-logo"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={deviconUrl(slug)} alt={name} width={26} height={26} className={invert ? "invert-dark" : ""} />
                   </li>
                 ))}
@@ -191,7 +178,6 @@ export function About() {
           </div>
         </div>
 
-        {/* Bio. */}
         <div className="about-copy">
           <p>
             I&apos;m a Software Developer at TING Works in Mumbai, building full-stack web applications with Next.js,
@@ -204,7 +190,6 @@ export function About() {
           </p>
         </div>
 
-        {/* Process: a path drawn through Design → Develop → Deliver. */}
         <div className="process">
           <svg
             className="process__line"

@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Intro curtain (Preloader.tsx).
 .preloader {
   @include fill;
   position: fixed;

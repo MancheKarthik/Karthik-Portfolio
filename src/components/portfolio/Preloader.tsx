@@ -3,10 +3,6 @@
 import { useRef, useState } from "react"
 import { gsap, useGSAP, SplitText, MOTION_OK } from "@/lib/gsap"
 
-/**
- * Intro curtain: a 0→100 counter, a split-text name reveal and a two-layer wipe.
- * Calls `onReveal` as the curtain starts lifting so the hero can animate in underneath.
- */
 export function Preloader({ onReveal }: { onReveal: () => void }) {
   const root = useRef<HTMLDivElement>(null)
   const [done, setDone] = useState(false)
@@ -28,9 +24,6 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
           const counter = { value: 0 }
           const counterEl = root.current!.querySelector<HTMLElement>(".preloader-count")!
 
-          // Built paused (so the hidden start state applies at once) and only played after
-          // the page's own start-up work — hydration, ScrollTrigger setup and the refresh
-          // ScrollTrigger runs on `load` — so none of it lands mid-animation.
           const tl = gsap
             .timeline({ paused: true, onComplete: () => setDone(true) })
             .from(split.chars, { yPercent: 110, stagger: 0.04, duration: 0.8, ease: "expo.out" })
@@ -56,10 +49,9 @@ export function Preloader({ onReveal }: { onReveal: () => void }) {
           const start = () => {
             if (started) return
             started = true
-            // Two frames: let the browser paint whatever the load handlers produced first.
             requestAnimationFrame(() => requestAnimationFrame(() => tl.play()))
           }
-          const fallback = setTimeout(start, 1500) // never hold the intro on a slow network
+          const fallback = setTimeout(start, 1500)
           if (document.readyState === "complete") start()
           else window.addEventListener("load", start, { once: true })
 

@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Follower cursor (Cursor.tsx). Hidden until GSAP shows it on fine pointers.
 .cursor-ring {
   visibility: hidden;
   position: fixed;
@@ -40,7 +39,6 @@
   mix-blend-mode: difference;
 }
 
-// Magnetic.tsx wrapper.
 .magnetic {
   display: inline-block;
   will-change: transform;

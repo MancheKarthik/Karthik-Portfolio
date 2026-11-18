@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Contact section, enquiry form, footer and back-to-top button (Contact.tsx).
 .contact {
   @include section;
 
@@ -62,7 +61,6 @@
     margin-top: 3.5rem;
   }
 
-  // "Prefer direct?" email / phone pills.
   &__direct {
     margin-top: 2.5rem;
     display: flex;
@@ -98,7 +96,6 @@
   }
 }
 
-// ── Enquiry form ─────────────────────────────────────────────────────────────
 .enquiry {
   position: relative;
   @include container($container-2xl);
@@ -114,7 +111,6 @@
     padding: 2.5rem;
   }
 
-  // "Message received" state.
   &--sent {
     padding: 2.5rem;
     text-align: center;
@@ -149,7 +145,6 @@
     }
   }
 
-  // Form layout.
   &__hairline {
     position: absolute;
     inset-inline: 0;
@@ -274,7 +269,6 @@
   }
 }
 
-// ── Form fields ──────────────────────────────────────────────────────────────
 .field-label {
   display: block;
 
@@ -357,7 +351,6 @@
   }
 }
 
-// ── Footer ───────────────────────────────────────────────────────────────────
 .site-footer {
   position: relative;
   padding: 2rem $gutter;
@@ -397,9 +390,8 @@
   }
 }
 
-// ── Back to top ──────────────────────────────────────────────────────────────
 .back-to-top {
-  visibility: hidden; // GSAP reveals it after scrolling
+  visibility: hidden;
   position: fixed;
   bottom: 2rem;
   right: 2rem;

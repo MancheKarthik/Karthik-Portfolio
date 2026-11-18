@@ -1,8 +1,6 @@
 import type { ReactNode } from "react"
 import { BarChart3, Code2, Rocket } from "lucide-react"
 
-/** Shared About content: used by the desktop scene (About.tsx) and the mobile stories. */
-
 export const MOTTO = "Clean data. Clean code."
 
 export const pillars = [
@@ -31,14 +29,12 @@ export const stack = [
   { slug: "mysql", name: "MySQL" },
 ]
 
-// Editor colours are fixed (code editors stay dark in both themes).
 const K = ({ children }: { children: ReactNode }) => <span className="tok-keyword">{children}</span>
 const V = ({ children }: { children: ReactNode }) => <span className="tok-var">{children}</span>
 const P = ({ children }: { children: ReactNode }) => <span className="tok-punct">{children}</span>
 const S = ({ children }: { children: ReactNode }) => <span className="tok-string">{children}</span>
 const key = (k: string) => <span className="tok-key">{k}</span>
 
-/** One line of code per piece of the profile card it renders (C++-flavoured). */
 export const LINES: ReactNode[] = [
   <>
     <K>auto</K> <V>karthik</V> <P>=</P> <K>Profile</K>

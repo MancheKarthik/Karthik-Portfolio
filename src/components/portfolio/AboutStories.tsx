@@ -17,11 +17,6 @@ const STORIES = [
   { label: "Motto", duration: 6 },
 ]
 
-/**
- * About, phone edition: a stories deck. Segmented bars auto-advance; swipe or tap the sides to
- * move, press and hold to pause. Each story has its own GSAP entrance, and the deck pauses
- * whenever it's off-screen. The deck keeps a fixed dark palette in both themes, as stories do.
- */
 export function AboutStories() {
   const root = useRef<HTMLDivElement>(null)
   const deck = useRef<HTMLDivElement>(null)
@@ -41,19 +36,17 @@ export function AboutStories() {
       let timer: gsap.core.Tween | null = null
       let entrance: gsap.core.Timeline | null = null
       let inView = false
-      let userPaused = reduce // no autoplay with reduced motion
+      let userPaused = reduce
       let holding = false
       let started = false
       let swipedAt = 0
       if (reduce) setPlaying(false)
 
-      // Text splits are prepared once; entrances replay them on every visit.
       const storyWords = SplitText.create(".st-words", { type: "words" }).words
-      const mottoChars = SplitText.create(".st-motto", { type: "words,chars", mask: "chars" }).chars // words keep letters together when wrapping
+      const mottoChars = SplitText.create(".st-motto", { type: "words,chars", mask: "chars" }).chars
 
       const q = (i: number, sel: string) => slides[i].querySelectorAll<HTMLElement>(sel)
       const ENTER: ((i: number) => gsap.core.Timeline)[] = [
-        // about.cpp: type each line (stepped clip = one character per step), then compile.
         (i) => {
           const t = gsap.timeline()
           t.set(q(i, ".st-compiled"), { autoAlpha: 0 })
@@ -70,13 +63,11 @@ export function AboutStories() {
             .to(q(i, ".st-dot"), { backgroundColor: "#a5e844", duration: 0.15 }, "<")
             .fromTo(q(i, ".st-hint"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 })
         },
-        // Profile: avatar pops, details rise in.
         (i) =>
           gsap
             .timeline()
             .fromTo(q(i, ".st-avatar"), { scale: 0.4, rotate: -20 }, { scale: 1, rotate: 0, duration: 0.7, ease: "back.out(2)" })
             .fromTo(q(i, ".st-item"), { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.1, duration: 0.6, ease: "power3.out" }, "<0.15"),
-        // Toolkit: chips pop, logos tumble in.
         (i) =>
           gsap
             .timeline()
@@ -87,12 +78,10 @@ export function AboutStories() {
               { y: 0, rotate: 0, autoAlpha: 1, stagger: 0.08, duration: 0.6, ease: "back.out(1.8)" },
               "-=0.15",
             ),
-        // My story: words light up in reading order.
         () =>
           gsap
             .timeline()
             .fromTo(storyWords, { opacity: 0.15 }, { opacity: 1, stagger: 0.07, duration: 0.25, ease: "none" }),
-        // How I work: the line draws down, each step arrives as it's reached.
         (i) =>
           gsap
             .timeline()
@@ -103,7 +92,6 @@ export function AboutStories() {
               { x: 0, autoAlpha: 1, stagger: 0.55, duration: 0.5, ease: "power3.out" },
               0.1,
             ),
-        // Motto: letters rise out of their masks, then the actions.
         (i) =>
           gsap
             .timeline()
@@ -176,7 +164,6 @@ export function AboutStories() {
 
       show(0, 1)
 
-      // Only run while on screen; the first time it appears, play the opening story.
       ScrollTrigger.create({
         trigger: el,
         start: "top 75%",
@@ -193,10 +180,6 @@ export function AboutStories() {
         },
       })
 
-      // Drag: the story follows the finger, then commits on release if dragged far enough (or
-      // flicked fast), otherwise springs back. Direction comes from the real geometry
-      // (start vs current position). Horizontal drags only, so page scrolling still works.
-      // Press and hold pauses.
       const dragX = (self: Observer) => (self.x ?? 0) - (self.startX ?? 0)
       const obs = Observer.create({
         target: el,
@@ -228,8 +211,6 @@ export function AboutStories() {
         },
       })
 
-      // Tap the left third to go back, anywhere else to go forward. A click whose pointer
-      // travelled is a swipe, not a tap (the click can arrive before Observer reports the swipe).
       let down = { x: 0, y: 0 }
       const onDown = (e: PointerEvent) => {
         down = { x: e.clientX, y: e.clientY }
@@ -269,7 +250,6 @@ export function AboutStories() {
         }}
         className="stories__deck"
       >
-        {/* Header: progress segments, who, which story, pause. */}
         <div className="stories__header">
           <div className="stories__segments" aria-hidden="true">
             {STORIES.map((s) => (
@@ -297,7 +277,6 @@ export function AboutStories() {
           </div>
         </div>
 
-        {/* 1. about.cpp */}
         <section className="story story--code" aria-label={`1 of ${STORIES.length}: about.cpp`}>
           <div className="story__bg story__bg--code" />
           <div className="st-editor">
@@ -328,7 +307,6 @@ export function AboutStories() {
           </p>
         </section>
 
-        {/* 2. Profile */}
         <section className="story story--center" aria-label={`2 of ${STORIES.length}: Profile`}>
           <div className="story__bg story__bg--profile" />
           <span className="st-avatar">
@@ -347,7 +325,6 @@ export function AboutStories() {
           </p>
         </section>
 
-        {/* 3. Toolkit */}
         <section className="story story--center" aria-label={`3 of ${STORIES.length}: Toolkit`}>
           <div className="story__bg story__bg--toolkit" />
           <h3 className="story__heading">Strengths</h3>
@@ -362,7 +339,6 @@ export function AboutStories() {
           <ul className="story__stack">
             {stack.map(({ slug, name, invert }) => (
               <li key={slug} className="st-logo">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={deviconUrl(slug)} alt="" width={32} height={32} className={invert ? "invert" : ""} />
                 <span className="st-logo__name">{name}</span>
               </li>
@@ -370,7 +346,6 @@ export function AboutStories() {
           </ul>
         </section>
 
-        {/* 4. My story */}
         <section className="story story--center" aria-label={`4 of ${STORIES.length}: My story`}>
           <div className="story__bg story__bg--story" />
           <p className="st-words">
@@ -379,7 +354,6 @@ export function AboutStories() {
           </p>
         </section>
 
-        {/* 5. How I work */}
         <section className="story story--center" aria-label={`5 of ${STORIES.length}: How I work`}>
           <div className="story__bg story__bg--work" />
           <div className="story__steps">
@@ -391,7 +365,6 @@ export function AboutStories() {
               aria-hidden="true"
             >
               <defs>
-                {/* userSpaceOnUse: a straight vertical path has a zero-width bounding box, so a bounding-box gradient would not render. */}
                 <linearGradient id="st-grad" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="0" y2="100">
                   <stop offset="0%" stopColor="#fbbf24" />
                   <stop offset="50%" stopColor="#fb923c" />
@@ -416,7 +389,6 @@ export function AboutStories() {
           </div>
         </section>
 
-        {/* 6. Motto */}
         <section className="story story--motto" aria-label={`6 of ${STORIES.length}: Motto`}>
           <p className="st-motto">
             {MOTTO}
@@ -436,7 +408,6 @@ export function AboutStories() {
           </div>
         </section>
 
-        {/* Footer: explicit controls (also the accessible way to navigate). */}
         <div className="stories__footer">
           <button
             type="button"

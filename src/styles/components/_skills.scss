@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Tech stack galaxy + panel (Skills.tsx).
 .skills {
   position: relative;
   overflow: hidden;
@@ -26,7 +25,6 @@
     }
   }
 
-  // ── Galaxy ─────────────────────────────────────────────────────────────────
   .galaxy {
     position: relative;
     margin-inline: auto;
@@ -51,7 +49,6 @@
     transform-style: preserve-3d;
   }
 
-  // Soft skills: a ring of text around the outside.
   .soft-ring {
     @include fill;
     width: 100%;
@@ -75,7 +72,7 @@
 
   .orbit {
     @include fill;
-    border: 1px dashed; // colour set inline per orbit
+    border: 1px dashed;
     border-radius: $radius-full;
   }
 
@@ -92,7 +89,7 @@
     @include center-grid;
     width: 1.75rem;
     height: 1.75rem;
-    border: 1px solid; // colour set inline per orbit
+    border: 1px solid;
     border-radius: $radius-full;
     background-color: $surface;
 
@@ -126,7 +123,6 @@
     }
   }
 
-  // The glowing initials in the middle.
   .core {
     position: absolute;
     left: 50%;
@@ -153,7 +149,6 @@
     }
   }
 
-  // ── Panel ──────────────────────────────────────────────────────────────────
   &__tabs {
     display: flex;
     flex-wrap: wrap;

@@ -3,7 +3,6 @@
 import { useRef, type ReactNode } from "react"
 import { gsap, useGSAP, SplitText, MOTION_OK } from "@/lib/gsap"
 
-/** Section title whose characters rise out of a mask when scrolled into view. */
 export function SectionHeading({
   eyebrow,
   lead,
@@ -15,7 +14,6 @@ export function SectionHeading({
   lead: string
   accent: string
   children?: ReactNode
-  /** Drift behind the scroll a little. Off for headings that get pinned. */
   lag?: boolean
 }) {
   const root = useRef<HTMLDivElement>(null)

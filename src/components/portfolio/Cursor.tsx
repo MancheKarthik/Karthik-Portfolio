@@ -3,10 +3,6 @@
 import { useRef } from "react"
 import { gsap, useGSAP } from "@/lib/gsap"
 
-/**
- * Follower cursor built on gsap.quickTo. Grows over interactive elements and shows a
- * label over anything with a `data-cursor="Label"` attribute. Fine pointers only.
- */
 export function Cursor() {
   const dot = useRef<HTMLDivElement>(null)
   const ring = useRef<HTMLDivElement>(null)
@@ -34,7 +30,6 @@ export function Cursor() {
         const target = (e.target as HTMLElement).closest<HTMLElement>("a, button, [data-cursor]")
         const text = target?.dataset.cursor ?? ""
         label.current!.textContent = text
-        // Theme foreground ("255,255,255" in dark, near-black in light) read live.
         const fg = getComputedStyle(document.documentElement).getPropertyValue("--fg-rgb").trim().split(/\s+/).join(",")
         gsap.to(ring.current, {
           width: target ? (text ? 96 : 64) : 40,

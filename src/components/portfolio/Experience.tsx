@@ -13,7 +13,6 @@ export function Experience() {
     () => {
       const mm = gsap.matchMedia()
       mm.add(MOTION_OK, () => {
-        // The timeline rail grows as the section scrolls past.
         gsap.from(".xp-rail", {
           scaleY: 0,
           ease: "none",
@@ -47,7 +46,6 @@ export function Experience() {
           Where I&apos;ve worked, what I&apos;ve studied and the certifications along the way.
         </SectionHeading>
 
-        {/* Work timeline. */}
         <ol className="xp-list">
           <span
             className="xp-rail"
@@ -100,7 +98,6 @@ export function Experience() {
           ))}
         </ol>
 
-        {/* Education, certifications, coursework, leadership. */}
         <div className="edu-grid">
           <div className="edu-card edu-card--wide">
             <h3 className="edu-card__title">

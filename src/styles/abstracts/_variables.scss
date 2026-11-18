@@ -1,15 +1,7 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// Design tokens. Change a value here and it updates everywhere.
-//
-// Theme-aware colours point at CSS custom properties (defined in base/_theme.scss),
-// so the light/dark switch keeps working. Edit the actual colour values there.
-// ─────────────────────────────────────────────────────────────────────────────
-
-// ── Theme-aware colours ──────────────────────────────────────────────────────
-$ink: var(--ink); // main text colour (white in dark, near-black in light)
-$paper: var(--paper); // page background
-$surface: var(--surface); // cards
-$surface-deep: var(--surface-deep); // preloader, mobile menu, form fields
+$ink: var(--ink);
+$paper: var(--paper);
+$surface: var(--surface);
+$surface-deep: var(--surface-deep);
 
 $gray-100: var(--gray-100);
 $gray-200: var(--gray-200);
@@ -21,7 +13,6 @@ $gray-700: var(--gray-700);
 $gray-800: var(--gray-800);
 $gray-900: var(--gray-900);
 
-// Accent "ember" palette: gold → orange → rose.
 $gold-300: var(--gold-300);
 $gold-400: var(--gold-400);
 $gold-500: var(--gold-500);
@@ -35,14 +26,12 @@ $rose-500: var(--rose-500);
 
 $danger: var(--danger);
 
-// ── Fixed colours (same in both themes) ──────────────────────────────────────
 $white: #fff;
 $black: #000;
 $emerald-400: oklch(76.5% 0.177 163.223);
 $emerald-500: oklch(69.6% 0.17 162.48);
 $focus-outline: oklch(70.8% 0 0 / 0.5);
 
-// Code editor (stays dark in both themes).
 $editor-bg: #15110f;
 $editor-bar: #1f1916;
 $editor-border: #ffffff14;
@@ -54,11 +43,9 @@ $editor-yellow: #febc2e;
 $editor-green: #28c840;
 $editor-success: #a5e844;
 
-// ── Typography ───────────────────────────────────────────────────────────────
 $font-sans: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 $font-mono: var(--font-mono), ui-monospace, Menlo, Consolas, monospace;
 
-// name: (font-size, line-height)
 $font-sizes: (
   xs: (0.75rem, 1.3333),
   sm: (0.875rem, 1.4286),
@@ -83,7 +70,6 @@ $tracking-tight: -0.025em;
 $tracking-wider: 0.05em;
 $tracking-widest: 0.1em;
 
-// ── Radii ────────────────────────────────────────────────────────────────────
 $radius-sm: 0.25rem;
 $radius-md: 0.5rem;
 $radius-lg: 0.625rem;
@@ -92,7 +78,6 @@ $radius-2xl: 1rem;
 $radius-3xl: 1.5rem;
 $radius-full: 9999px;
 
-// ── Layout ───────────────────────────────────────────────────────────────────
 $breakpoints: (
   sm: 40rem,
   md: 48rem,
@@ -108,13 +93,11 @@ $container-4xl: 56rem;
 $container-6xl: 72rem;
 $container-7xl: 80rem;
 
-$gutter: 1.5rem; // side padding of sections
+$gutter: 1.5rem;
 
-// ── Motion ───────────────────────────────────────────────────────────────────
 $ease: cubic-bezier(0.4, 0, 0.2, 1);
 $duration: 150ms;
 
-// ── Z-index ──────────────────────────────────────────────────────────────────
 $z-background: 0;
 $z-content: 10;
 $z-menu: 40;

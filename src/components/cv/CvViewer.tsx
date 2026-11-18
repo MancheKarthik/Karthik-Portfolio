@@ -7,19 +7,12 @@ import "pdfjs-dist/web/pdf_viewer.css"
 import { asset } from "@/lib/utils"
 import { CV_FILENAME, CV_PATH, NAME } from "@/data/portfolio"
 
-
 type Status = "loading" | "ready" | "error"
 
-/**
- * Desktop browsers show the PDF in their own viewer. Touch browsers can't preview PDFs
- * inline (iOS shows page one, Android downloads), so there the CV is drawn page by page
- * with pdf.js, with a selectable text layer and clickable links so it still behaves like a PDF.
- */
 export function CvViewer() {
   const router = useRouter()
   const pagesRef = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState<Status>("loading")
-  // null until we know whether the browser can show PDFs natively (touch devices can't).
   const [native, setNative] = useState<boolean | null>(null)
   const pdfUrl = asset(CV_PATH)
 
@@ -33,7 +26,6 @@ export function CvViewer() {
     let destroy: (() => void) | undefined
 
     async function render() {
-      // Legacy build: still runs on older iOS Safari versions.
       const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs")
       pdfjs.GlobalWorkerOptions.workerSrc = new URL(
         "pdfjs-dist/legacy/build/pdf.worker.min.mjs",
@@ -84,7 +76,6 @@ export function CvViewer() {
         })
         await text.render()
 
-        // Clickable links (mailto, GitHub, live sites) on top of the text.
         for (const a of await page.getAnnotations()) {
           if (a.subtype !== "Link" || !a.url) continue
           const [x1, y1, x2, y2] = cssViewport.convertToViewportRectangle(a.rect)
@@ -114,8 +105,6 @@ export function CvViewer() {
     }
   }, [pdfUrl, native])
 
-  // iOS Safari and in-app browsers ignore <a download> on a plain link, so fetch the
-  // file and hand it over as a blob: the share sheet where available, else a blob link.
   async function downloadCv(e: MouseEvent<HTMLAnchorElement>) {
     e.preventDefault()
     try {
@@ -145,7 +134,6 @@ export function CvViewer() {
     }
   }
 
-  // Return to the portfolio if we came from it; otherwise (direct link) go home.
   function goBack() {
     const fromSite = document.referrer && new URL(document.referrer).origin === window.location.origin
     if (fromSite && window.history.length > 1) router.back()

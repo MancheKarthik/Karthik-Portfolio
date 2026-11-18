@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// ── Logo.tsx: wordmark whose letters roll to a gradient copy on hover ────────
 .logo {
   display: flex;
   align-items: center;
@@ -39,7 +38,7 @@
     &--hover {
       position: absolute;
       left: 0;
-      top: 100%;
+      top: calc(100% + 0.22em);
       @include gradient-text(warm-gradient(to bottom));
     }
   }
@@ -55,7 +54,6 @@
   }
 }
 
-// ── RollText.tsx: letters roll up to reveal a second copy ────────────────────
 .roll-text {
   &__letters {
     display: inline-flex;
@@ -83,7 +81,6 @@
   }
 }
 
-// ── SectionHeading.tsx ───────────────────────────────────────────────────────
 .section-heading {
   margin-bottom: 2.5rem;
   text-align: left;
@@ -146,7 +143,6 @@
   }
 }
 
-// ── Code-editor syntax colours (aboutData.tsx) ───────────────────────────────
 .tok-keyword {
   color: #c792ea;
 }

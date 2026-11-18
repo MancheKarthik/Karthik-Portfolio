@@ -18,8 +18,6 @@ export function Hero({ ready }: { ready: boolean }) {
   const root = useRef<HTMLElement>(null)
   const intro = useRef<gsap.core.Timeline | null>(null)
 
-  // Everything — including the text splitting — is prepared on mount while the preloader
-  // still covers the page. When the curtain lifts, the intro only has to play.
   useGSAP(
     () => {
       gsap.set(".hero-content", { autoAlpha: 1 })
@@ -34,7 +32,6 @@ export function Hero({ ready }: { ready: boolean }) {
           .from(greeting.chars, { yPercent: 120, rotate: 8, stagger: 0.035, duration: 1.2 })
           .from(
             ".hero-name",
-            // clearProps: a lingering clip-path breaks background-clip:text in Chromium.
             { clipPath: "inset(0% 100% 0% 0%)", duration: 1.4, ease: "expo.inOut", clearProps: "clipPath" },
             "-=0.9",
           )
@@ -45,7 +42,6 @@ export function Hero({ ready }: { ready: boolean }) {
           .from(".hero-card", { x: 60, autoAlpha: 0, rotate: 3, duration: 1.2 }, "-=1.2")
           .from(".hero-scroll", { autoAlpha: 0, y: -20, duration: 0.8 }, "-=0.4"))
 
-        // Rotating roles, decoded with ScrambleText; starts near the end of the intro.
         const roleTl = gsap.timeline({ paused: true, repeat: -1 })
         tl.call(() => roleTl.play(), undefined, tl.duration() - 1)
         roles.forEach((role) => {
@@ -58,7 +54,6 @@ export function Hero({ ready }: { ready: boolean }) {
             .to({}, { duration: 1.8 })
         })
 
-        // Shimmer across the gradient name.
         gsap.to(".hero-name", {
           backgroundPosition: "200% center",
           duration: 6,
@@ -68,7 +63,6 @@ export function Hero({ ready }: { ready: boolean }) {
 
         gsap.to(".hero-scroll svg", { y: 10, duration: 1, ease: "sine.inOut", yoyo: true, repeat: -1 })
 
-        // Scroll-out: content lifts, fades and softens as the hero leaves.
         gsap.to(".hero-content", {
           yPercent: -25,
           autoAlpha: 0,
@@ -169,7 +163,6 @@ export function Hero({ ready }: { ready: boolean }) {
           </div>
         </div>
 
-        {/* Profile card. */}
         <aside className="hero-card">
           <div
             className="hero-card__glow"

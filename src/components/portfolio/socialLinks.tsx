@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { Github, Linkedin, Mail, Phone } from "lucide-react"
 import { TIME_ZONE, socials } from "@/data/portfolio"
 
-/** Social links that have a URL set (empty ones in data/portfolio.ts are skipped). */
 export const socialLinks = [
   { href: socials.linkedin, label: "LinkedIn", Icon: Linkedin },
   { href: socials.github, label: "GitHub", Icon: Github },
@@ -14,7 +13,6 @@ export const socialLinks = [
 
 export const isExternal = (href: string) => href.startsWith("http")
 
-/** Live local time; rendered client-side only to avoid a hydration mismatch. */
 export function LocalTime() {
   const [time, setTime] = useState<string | null>(null)
   useEffect(() => {

@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Header bar (Nav.tsx). Turns into a glass bar once scrolled (.is-scrolled from ScrollTrigger).
 .site-nav {
   position: fixed;
   inset-inline: 0;
@@ -34,7 +33,6 @@
     }
   }
 
-  // Desktop tabs: floating pill with a sliding, colour-inverting indicator.
   &__menu {
     display: none;
 
@@ -94,7 +92,6 @@
     }
   }
 
-  // Right-hand side: clock, "Let's talk", burger.
   &__actions {
     display: flex;
     align-items: center;
@@ -183,7 +180,6 @@
     }
   }
 
-  // Mobile burger; morphs to ✕ with GSAP.
   .burger {
     position: relative;
     z-index: $z-content;
@@ -218,7 +214,6 @@
     top: calc(50% + 2.5px);
   }
 
-  // Scroll progress line along the bottom edge.
   .nav-progress {
     position: absolute;
     bottom: 0;
@@ -231,7 +226,6 @@
   }
 }
 
-// Mobile full-screen menu (GSAP sets display: flex when opened).
 .mobile-menu {
   @include fill;
   position: fixed;

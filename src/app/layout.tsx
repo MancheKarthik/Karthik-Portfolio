@@ -16,8 +16,7 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-// Update this once the site is deployed (e.g. your Vercel URL).
-const SITE_URL = "https://karthik-manche.vercel.app";
+const SITE_URL = "https://karthik-manche.netlify.app";
 const isVercel = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "vercel";
 
 const TITLE = "Karthik Manche | Software Developer & Data Analyst";

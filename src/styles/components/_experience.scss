@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// Experience timeline + education grid (Experience.tsx).
 .experience {
   @include section;
 
@@ -8,7 +7,6 @@
     @include container($container-6xl);
   }
 
-  // ── Work timeline ──────────────────────────────────────────────────────────
   .xp-list {
     position: relative;
     padding-left: 2.5rem;
@@ -183,7 +181,6 @@
     }
   }
 
-  // ── Education, certifications, coursework, leadership ──────────────────────
   .edu-grid {
     margin-top: 4rem;
     display: grid;

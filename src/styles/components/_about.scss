@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// About section, desktop version (About.tsx). Phones get the stories deck (_about-stories.scss).
 .about {
   @include section;
 
@@ -16,7 +15,6 @@
     }
   }
 
-  // Scene: code on the left renders the card on the right.
   .about-scene {
     display: grid;
     align-items: center;
@@ -28,7 +26,6 @@
     }
   }
 
-  // ── Code editor card ───────────────────────────────────────────────────────
   .code-card {
     overflow: hidden;
     border: 1px solid fade($ink, 10%);
@@ -133,7 +130,6 @@
     }
   }
 
-  // ── Rendered profile card ──────────────────────────────────────────────────
   &__output {
     position: relative;
   }
@@ -255,7 +251,6 @@
     }
   }
 
-  // ── Bio ────────────────────────────────────────────────────────────────────
   .about-copy {
     @include container($container-4xl);
     margin-top: 4rem;
@@ -271,7 +266,6 @@
     }
   }
 
-  // ── Process: Analyse → Build → Automate ────────────────────────────────────
   .process {
     position: relative;
     margin-top: 4rem;

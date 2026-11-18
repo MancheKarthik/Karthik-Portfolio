@@ -3,10 +3,6 @@
 import { useRef } from "react"
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap"
 
-/**
- * Text whose letters roll up to reveal a second copy when the closest link/button is
- * hovered or focused. Screen readers get the plain text once.
- */
 export function RollText({
   text,
   className = "",
@@ -14,7 +10,6 @@ export function RollText({
 }: {
   text: string
   className?: string
-  /** The rolled-in copy uses the accent gradient. */
   gradient?: boolean
 }) {
   const ref = useRef<HTMLSpanElement>(null)

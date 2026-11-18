@@ -1,8 +1,5 @@
 @use "../abstracts" as *;
 
-// About, phone edition: a stories deck (AboutStories.tsx).
-// The deck keeps a fixed dark palette in both themes, as stories do, so colours here are literal.
-
 $deck-bg: #120e0c;
 $deck-text: #f8fafc;
 $deck-border: #ffffff1a;
@@ -55,7 +52,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // ── Header: progress segments, who, which story, pause ─────────────────────
   &__header {
     position: absolute;
     inset-inline: 0;
@@ -136,7 +132,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // ── Footer: previous / counter / next ──────────────────────────────────────
   &__footer {
     position: absolute;
     inset-inline: 0;
@@ -167,7 +162,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
   }
 }
 
-// ── A single story slide ─────────────────────────────────────────────────────
 .story {
   @include fill;
   isolation: isolate;
@@ -198,7 +192,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // Soft glow behind each story.
   &__bg {
     @include fill;
     z-index: -1;
@@ -223,7 +216,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // 1. about.cpp ─────────────────────────────────────────────────────────────
   .st-editor {
     overflow: hidden;
     border: 1px solid $editor-border;
@@ -339,7 +331,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // 2. Profile ───────────────────────────────────────────────────────────────
   .st-avatar {
     @include center-grid;
     width: 7rem;
@@ -394,7 +385,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     color: #94a3b8;
   }
 
-  // 3. Toolkit ───────────────────────────────────────────────────────────────
   &__heading {
     @include text(sm);
     font-weight: 600;
@@ -462,7 +452,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // 4. My story ──────────────────────────────────────────────────────────────
   .st-words {
     font-size: 1.6rem;
     font-weight: 600;
@@ -474,7 +463,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // 5. How I work ────────────────────────────────────────────────────────────
   &__steps {
     position: relative;
   }
@@ -534,7 +522,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  // 6. Motto ─────────────────────────────────────────────────────────────────
   .st-motto {
     font-size: 3.4rem;
     font-weight: 700;

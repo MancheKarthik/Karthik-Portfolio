@@ -3,30 +3,24 @@
 @use "variables" as *;
 @use "functions" as *;
 
-// ── Responsive ───────────────────────────────────────────────────────────────
-
-/// From a breakpoint up: @include up(md) { ... }
 @mixin up($bp) {
   @media (min-width: map.get($breakpoints, $bp)) {
     @content;
   }
 }
 
-/// Below a breakpoint: @include down(lg) { ... }
 @mixin down($bp) {
   @media (width < map.get($breakpoints, $bp)) {
     @content;
   }
 }
 
-/// Short screens (phones in landscape, small laptops).
 @mixin short {
   @media (max-height: 700px) {
     @content;
   }
 }
 
-/// Hover only on devices that can hover (no sticky hover on touch).
 @mixin hover {
   @media (hover: hover) {
     &:hover {
@@ -35,9 +29,6 @@
   }
 }
 
-// ── Typography ───────────────────────────────────────────────────────────────
-
-/// Font size + matching line height from $font-sizes: @include text(xl)
 @mixin text($size) {
   $pair: map.get($font-sizes, $size);
   font-size: list.nth($pair, 1);
@@ -49,22 +40,18 @@
   @include text($size);
 }
 
-/// Small uppercase label, e.g. section eyebrows.
 @mixin eyebrow($tracking: 0.35em) {
   @include mono(xs);
   text-transform: uppercase;
   letter-spacing: $tracking;
 }
 
-/// Gradient-filled text.
 @mixin gradient-text($gradient: warm-gradient()) {
   background-image: $gradient;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-
-// ── Layout helpers ───────────────────────────────────────────────────────────
 
 @mixin center-grid {
   display: grid;
@@ -76,14 +63,12 @@
   inset: 0;
 }
 
-/// Vertical gap between children (like Tailwind's space-y-*).
 @mixin stack($gap) {
   > :not(:last-child) {
     margin-bottom: $gap;
   }
 }
 
-/// Standard section padding.
 @mixin section {
   position: relative;
   padding: 2.5rem $gutter;
@@ -98,9 +83,6 @@
   max-width: $max;
 }
 
-// ── Surfaces ─────────────────────────────────────────────────────────────────
-
-/// Hairline-bordered card.
 @mixin card($radius: $radius-2xl, $bg-opacity: 70%) {
   border: 1px solid fade($ink, 10%);
   border-radius: $radius;
@@ -112,7 +94,6 @@
   backdrop-filter: blur($blur);
 }
 
-/// Gradient initials badge (hero card, about card).
 @mixin avatar($size: 4rem) {
   @include center-grid;
   flex-shrink: 0;
@@ -125,14 +106,11 @@
   @include text(xl);
 }
 
-/// Primary call-to-action button (gold → orange).
 @mixin button-primary {
   background-image: warm-gradient(to right, $gold-500, $orange-500);
   color: $white;
   font-weight: 600;
 }
-
-// ── Shadows ──────────────────────────────────────────────────────────────────
 
 @function shadow-lg($color: rgb(0 0 0 / 0.1)) {
   @return 0 10px 15px -3px $color, 0 4px 6px -4px $color;
@@ -143,8 +121,6 @@
 @function shadow-2xl($color: rgb(0 0 0 / 0.25)) {
   @return 0 25px 50px -12px $color;
 }
-
-// ── Transitions ──────────────────────────────────────────────────────────────
 
 @mixin transition-colors($duration: $duration) {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
@@ -164,8 +140,6 @@
   transition-timing-function: $ease;
   transition-duration: $duration;
 }
-
-// ── Animations (keyframes live in base/_animations.scss) ─────────────────────
 
 @mixin animate-spin {
   animation: spin 1s linear infinite;

@@ -13,10 +13,6 @@ import { Projects } from "./Projects"
 import { Skills } from "./Skills"
 import { BackToTop, Contact, Footer } from "./Contact"
 
-/**
- * Creates ScrollSmoother. It is rendered before every other component, so its layout
- * effect runs first and all later ScrollTriggers (including pins) see the smoothed scroller.
- */
 function SmoothScroller({ ready }: { ready: boolean }) {
   useGSAP(() => {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual"
@@ -27,9 +23,9 @@ function SmoothScroller({ ready }: { ready: boolean }) {
       const smoother = ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
         content: "#smooth-content",
-        smooth: 1.4, // seconds the content takes to catch up with the scroll position
+        smooth: 1.4,
         effects: true,
-        smoothTouch: 0.2, // lighter on touch, so swipes still feel direct
+        smoothTouch: 0.2,
       })
       smoother.paused(true)
       return () => smoother.kill()
@@ -38,8 +34,6 @@ function SmoothScroller({ ready }: { ready: boolean }) {
 
   useGSAP(
     () => {
-      // Positions were already measured on `load` (before the preloader started), so a
-      // refresh here would only cause a hitch right as the curtain lifts.
       if (!ready) return
       ScrollSmoother.get()?.paused(false)
     },

@@ -20,17 +20,14 @@ export function Nav({ ready }: { ready: boolean }) {
 
   const { contextSafe } = useGSAP(
     () => {
-      // Scroll progress bar.
       gsap.to(".nav-progress", {
         scaleX: 1,
         ease: "none",
         scrollTrigger: { start: 0, end: "max", scrub: 0.3 },
       })
 
-      // Condense into a glass bar once the page has scrolled.
       ScrollTrigger.create({ start: 40, end: "max", toggleClass: { targets: ".site-nav", className: "is-scrolled" } })
 
-      // Hide on scroll down, reveal on scroll up.
       const showNav = gsap
         .from(".site-nav", { yPercent: -110, paused: true, duration: 0.45, ease: "power3.out" })
         .progress(1)
@@ -40,7 +37,6 @@ export function Nav({ ready }: { ready: boolean }) {
         onUpdate: (self) => (self.direction === -1 ? showNav.play() : showNav.reverse()),
       })
 
-      // Mobile menu: burger morphs to ✕, panel wipes in, content staggers up.
       menuTl.current = gsap
         .timeline({ paused: true, defaults: { ease: "expo.inOut" } })
         .to(".burger-top", { y: 3.5, rotate: 45, duration: 0.5 }, 0)
@@ -58,7 +54,6 @@ export function Nav({ ready }: { ready: boolean }) {
     { scope: root },
   )
 
-  // Sliding indicator: follows the hovered tab, rests on the active section.
   const moveTo = contextSafe((el: HTMLElement | null) => {
     if (!pill.current) return
     if (!el) {
@@ -78,7 +73,6 @@ export function Nav({ ready }: { ready: boolean }) {
 
   useGSAP(() => moveTo(activeTab()), { scope: root, dependencies: [active] })
 
-  // Intro once the preloader lifts.
   useGSAP(
     () => {
       if (!ready) return
@@ -89,7 +83,6 @@ export function Nav({ ready }: { ready: boolean }) {
         gsap.from(".nav-side", { autoAlpha: 0, x: 20, stagger: 0.1, duration: 0.8, delay: 0.9 })
       })
 
-      // Track the section under the middle of the viewport.
       const sections = navItems.map((item) => [item, document.getElementById(item.toLowerCase())!] as const)
       const track = () => {
         const mid = window.innerHeight / 2
@@ -123,7 +116,6 @@ export function Nav({ ready }: { ready: boolean }) {
         <div className="site-nav__inner">
           <Logo ready={ready} onClick={(e) => go(e, "#top")} />
 
-          {/* Desktop: floating pill with a sliding, colour-inverting indicator. */}
           <nav aria-label="Main" className="site-nav__menu">
             <ul
               className="nav-shell"
@@ -177,7 +169,6 @@ export function Nav({ ready }: { ready: boolean }) {
               </Magnetic>
             </div>
 
-            {/* Mobile burger. */}
             <button
               className="burger"
               onClick={() => toggleMenu(!menuOpen)}
@@ -194,7 +185,6 @@ export function Nav({ ready }: { ready: boolean }) {
         <div className="nav-progress" />
       </header>
 
-      {/* Mobile full-screen menu. */}
       <div
         id="mobile-menu"
         className="mobile-menu"

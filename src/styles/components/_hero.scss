@@ -1,6 +1,5 @@
 @use "../abstracts" as *;
 
-// First screen (Hero.tsx).
 .hero {
   position: relative;
   display: flex;
@@ -12,7 +11,6 @@
     min-height: 100svh;
   }
 
-  // Giant outlined words drifting behind the content.
   .hero-marquee {
     position: absolute;
     bottom: 8%;
@@ -30,7 +28,7 @@
   }
 
   .hero-content {
-    visibility: hidden; // GSAP reveals it
+    visibility: hidden;
     position: relative;
     z-index: $z-content;
     @include container($container-7xl);
@@ -95,7 +93,7 @@
     vertical-align: top;
     padding-bottom: 0.5rem;
     @include gradient-text(brand-gradient());
-    background-size: 200% auto; // GSAP slides this for the shimmer
+    background-size: 200% auto;
   }
 
   .hero-role {
@@ -135,7 +133,6 @@
     }
   }
 
-  // Buttons.
   .hero-cta {
     margin-bottom: 2.5rem;
     display: flex;
@@ -204,7 +201,6 @@
     }
   }
 
-  // Profile card on the right.
   .hero-card {
     position: relative;
     margin-inline: auto;

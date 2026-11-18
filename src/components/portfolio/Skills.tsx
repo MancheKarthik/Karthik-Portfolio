@@ -8,14 +8,12 @@ import { SectionHeading } from "./SectionHeading"
 const INVERT = INVERT_ICONS
 const ALIAS: Record<string, string> = { "Google Colab": "jupyter" }
 
-/** Devicon for a skill name, if there is one. */
 function iconFor(name: string) {
   const slug = ALIAS[name] ?? techIcons.find((t) => t.name === name)?.slug
   const icon = techIcons.find((t) => t.slug === slug)
   return icon ? { src: deviconUrl(icon.slug, icon.variant), invert: INVERT.has(icon.slug) } : null
 }
 
-// Orbits, inner to outer. Radius is a fraction of the galaxy's width; `dir` alternates.
 const ORBITS = [
   { title: "Dev Tools", radius: 0.27, color: "#38bdf8", period: 38, dir: 1 },
   { title: "Languages", radius: 0.44, color: "#fbbf24", period: 54, dir: -1 },
@@ -40,7 +38,6 @@ export function Skills() {
     setActive(i)
   }
 
-  // Galaxy motion: orbits, entrance, scroll-velocity boost, pointer tilt, auto-cycling.
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
@@ -48,7 +45,6 @@ export function Skills() {
         const loops = gsap.utils.toArray<HTMLElement>(".orbit").map((ring) => {
           const period = Number(ring.dataset.period)
           const dir = Number(ring.dataset.dir)
-          // The ring turns; each planet turns back the same amount so logos stay upright.
           return gsap
             .timeline({ repeat: -1, defaults: { ease: "none", duration: period } })
             .to(ring, { rotation: 360 * dir }, 0)
@@ -56,7 +52,6 @@ export function Skills() {
         })
         loops.push(gsap.timeline({ repeat: -1 }).to(".soft-ring", { rotation: -360, duration: 120, ease: "none" }))
 
-        // Entrance: rings expand out of the core, planets pop, the soft-skill ring fades in.
         gsap
           .timeline({ scrollTrigger: { trigger: ".galaxy", start: "top 75%" } })
           .from(".core", { scale: 0, duration: 0.8, ease: "back.out(2)" })
@@ -64,7 +59,6 @@ export function Skills() {
           .from(".planet-face", { scale: 0, stagger: 0.03, duration: 0.5, ease: "back.out(2.5)" }, "-=0.6")
           .from(".soft-ring", { autoAlpha: 0, scale: 0.9, duration: 0.8 }, "-=0.4")
 
-        // Scrolling fast makes the galaxy spin faster, then it settles.
         ScrollTrigger.create({
           trigger: ".galaxy",
           start: "top bottom",
@@ -78,7 +72,6 @@ export function Skills() {
           },
         })
 
-        // Cycle through groups while on screen, until the visitor picks one.
         let inView = false
         let cycle: gsap.core.Tween | null = null
         const next = () => {
@@ -99,7 +92,6 @@ export function Skills() {
         return () => cycle?.kill()
       })
 
-      // 3D tilt towards the pointer (mouse/trackpad only).
       mm.add(`(pointer: fine) and ${MOTION_OK}`, () => {
         const stage = root.current!.querySelector<HTMLElement>(".galaxy")!
         const rx = gsap.quickTo(".galaxy-tilt", "rotationX", { duration: 0.8, ease: "power3" })
@@ -124,7 +116,6 @@ export function Skills() {
     { scope: root },
   )
 
-  // Highlight the active group's orbit and bring its skills into the panel.
   useGSAP(
     () => {
       const title = GROUPS[active].title
@@ -160,12 +151,10 @@ export function Skills() {
         </SectionHeading>
 
         <div className="skills__layout">
-          {/* The galaxy. Decorative: the panel and the hidden list carry the same information. */}
           <div className="galaxy" aria-hidden="true">
             <div className="galaxy-tilt">
               <div className="galaxy__glow" />
 
-              {/* Soft skills: a ring of text around the outside. */}
               <svg className="soft-ring" viewBox="0 0 100 100">
                 <defs>
                   <path id="soft-path" d="M50,50 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
@@ -213,7 +202,6 @@ export function Skills() {
                                 style={{ borderColor: `${o.color}99`, boxShadow: `0 0 18px ${o.color}40` }}
                               >
                                 {icon ? (
-                                  // eslint-disable-next-line @next/next/no-img-element
                                   <img
                                     src={icon.src}
                                     alt=""
@@ -237,7 +225,6 @@ export function Skills() {
                 )
               })}
 
-              {/* The core. */}
               <div className="core">
                 <span className="core__ping" />
                 {INITIALS}
@@ -245,7 +232,6 @@ export function Skills() {
             </div>
           </div>
 
-          {/* Panel: pick a group; its orbit lights up and its skills are listed. */}
           <div>
             <div className="skills__tabs" role="tablist" aria-label="Skill groups">
               {GROUPS.map((g, i) => (
@@ -282,7 +268,6 @@ export function Skills() {
                     >
                       <span className="panel-item__icon">
                         {icon ? (
-                          // eslint-disable-next-line @next/next/no-img-element
                           <img src={icon.src} alt="" width={22} height={22} className={icon.invert ? "invert-dark" : ""} />
                         ) : (
                           <span className="skills__swatch" style={{ backgroundColor: group.color }} />
@@ -297,7 +282,6 @@ export function Skills() {
           </div>
         </div>
 
-        {/* Full list for screen readers (the galaxy is decorative). */}
         <ul className="sr-only">
           {skillClusters.map((c) => (
             <li key={c.title}>

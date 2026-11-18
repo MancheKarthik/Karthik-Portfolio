@@ -24,10 +24,8 @@ if (typeof window !== "undefined") {
   gsap.defaults({ ease: "power3.out", duration: 1 })
 }
 
-/** Media query shared by every component so motion can be switched off in one place. */
 export const MOTION_OK = "(prefers-reduced-motion: no-preference)"
 
-/** Scroll to a section, going through ScrollSmoother when it is active. */
 export function scrollToTarget(target: string | number) {
   const smoother = ScrollSmoother.get()
   if (smoother) {

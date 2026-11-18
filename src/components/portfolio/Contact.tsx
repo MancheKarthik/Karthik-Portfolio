@@ -109,15 +109,10 @@ const ENQUIRY_TYPES = [
   "Something else",
 ] as const
 
-/**
- * Static-host friendly: posts straight to FormSubmit, which relays the enquiry to EMAIL.
- * (The very first submission triggers a one-time activation email to that inbox.)
- */
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL}`
 
 type Status = "idle" | "sending" | "sent" | "error"
 
-/** A labelled text input; every field is required unless it says otherwise. */
 function Field({ label, className, ...props }: { label: string } & InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className={`field-label ${className ?? ""}`}>
@@ -139,7 +134,7 @@ function EnquiryForm() {
     e.preventDefault()
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form))
-    if (data._honey) return // bots fill hidden fields; humans don't
+    if (data._honey) return
 
     setStatus("sending")
     try {
@@ -189,7 +184,6 @@ function EnquiryForm() {
       onSubmit={onSubmit}
       className="enquiry"
     >
-      {/* gradient hairline across the top edge */}
       <span aria-hidden="true" className="enquiry__hairline" />
 
       <div className="enquiry__head">

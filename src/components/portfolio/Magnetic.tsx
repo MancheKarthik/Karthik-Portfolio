@@ -3,7 +3,6 @@
 import { useRef, type ReactNode } from "react"
 import { gsap, useGSAP } from "@/lib/gsap"
 
-/** Pulls its child towards the pointer and springs back with an elastic ease on leave. */
 export function Magnetic({ children, strength = 0.35 }: { children: ReactNode; strength?: number }) {
   const ref = useRef<HTMLDivElement>(null)
 

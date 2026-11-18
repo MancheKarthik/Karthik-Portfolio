@@ -12,10 +12,6 @@ export const PHONE = "+91 93244 06997"
 export const CV_PATH = "/Karthik-Manche-Resume.pdf"
 export const CV_FILENAME = "Karthik-Manche-Resume.pdf"
 
-/**
- * Add your profile URLs here. Empty links are hidden everywhere on the site.
- * e.g. linkedin: "https://www.linkedin.com/in/your-handle/"
- */
 export const socials = {
   linkedin: "",
   github: "",
@@ -183,7 +179,6 @@ export const skillClusters = [
   },
 ]
 
-/** Devicon slugs used by the floating background and the skill icons. */
 export const techIcons: { slug: string; name: string; variant?: string }[] = [
   { slug: "python", name: "Python" },
   { slug: "javascript", name: "JavaScript" },
@@ -203,7 +198,6 @@ export const techIcons: { slug: string; name: string; variant?: string }[] = [
   { slug: "nodejs", name: "Node.js" },
 ]
 
-/** Logos that are black and need inverting on the dark theme. */
 export const INVERT_ICONS = new Set(["nextjs", "github"])
 
 export const deviconUrl = (slug: string, variant = "original") =>
