@@ -132,6 +132,7 @@ function Field({ label, className, ...props }: { label: string } & InputHTMLAttr
 function EnquiryForm() {
   const [type, setType] = useState<(typeof ENQUIRY_TYPES)[number] | null>(null)
   const [status, setStatus] = useState<Status>("idle")
+  const [errorMessage, setErrorMessage] = useState("")
   const somethingElse = type === "Something else"
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -158,11 +159,14 @@ function EnquiryForm() {
         }),
       })
       const json = await res.json().catch(() => ({}))
-      if (!res.ok || String(json.success) === "false") throw new Error(json.message)
+      if (!res.ok || String(json.success) !== "true") throw new Error(json.message || `HTTP ${res.status}`)
       setStatus("sent")
+      setErrorMessage("")
       form.reset()
       setType(null)
-    } catch {
+    } catch (err) {
+      console.error("Contact form failed:", err)
+      setErrorMessage(err instanceof Error ? err.message : "")
       setStatus("error")
     }
   }
@@ -248,7 +252,9 @@ function EnquiryForm() {
         <div className="enquiry__status">
           {status === "error" ? (
             <p role="alert" className="enquiry__error">
-              Something went wrong. Please try again or email me directly.
+              Couldn&apos;t send your message. Please try again or{" "}
+              <a href={socials.email} className="enquiry__error-link">email me directly</a>.
+              {process.env.NODE_ENV !== "production" && errorMessage ? ` (${errorMessage})` : ""}
             </p>
           ) : (
             <p className="enquiry__note">Your details are only used to reply to you.</p>
