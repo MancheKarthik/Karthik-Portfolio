@@ -9,22 +9,6 @@
     padding-block: 3.5rem;
   }
 
-  &__inner {
-    @include container($container-7xl);
-    padding-inline: $gutter;
-  }
-
-  &__layout {
-    display: grid;
-    align-items: center;
-    gap: 2.5rem;
-
-    @include up(lg) {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
-      gap: 4rem;
-    }
-  }
-
   .galaxy {
     position: relative;
     margin-inline: auto;
@@ -32,14 +16,6 @@
     max-width: 600px;
     aspect-ratio: 1;
     perspective: 1200px;
-
-    &__glow {
-      position: absolute;
-      inset: 20%;
-      border-radius: $radius-full;
-      background-image: radial-gradient(circle, rgb(249 115 22 / 0.22), transparent 70%);
-      pointer-events: none;
-    }
   }
 
   .galaxy-tilt {
@@ -53,14 +29,6 @@
     @include fill;
     width: 100%;
     height: 100%;
-
-    &__text {
-      fill: #a78bfa;
-      font-size: 3.1px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
   }
 
   .orbit-track {
@@ -102,25 +70,6 @@
       width: 2.75rem;
       height: 2.75rem;
     }
-
-    &__icon {
-      width: 1rem;
-      height: 1rem;
-
-      @include up(sm) {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
-    }
-
-    &__abbr {
-      font-size: 9px;
-      font-weight: 700;
-
-      @include up(sm) {
-        @include text(xs);
-      }
-    }
   }
 
   .core {
@@ -140,58 +89,6 @@
     @include up(sm) {
       @include text(xl);
     }
-
-    &__ping {
-      @include fill;
-      border-radius: $radius-full;
-      background-color: fade($orange-500, 30%);
-      @include animate-ping;
-    }
-  }
-
-  &__tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  &__tab {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid fade($ink, 15%);
-    border-radius: $radius-full;
-    @include text(sm);
-    font-weight: 500;
-    color: $gray-300;
-    @include transition-colors;
-
-    @include hover {
-      border-color: fade($ink, 40%);
-    }
-
-    &.is-active {
-      border-color: transparent;
-      background-color: $ink;
-      color: $paper;
-    }
-  }
-
-  &__swatch {
-    flex-shrink: 0;
-    width: 0.625rem;
-    height: 0.625rem;
-    border-radius: $radius-full;
-  }
-
-  &__panel {
-    margin-top: 2rem;
-    min-height: 16rem;
-  }
-
-  &__title-mask {
-    overflow: hidden;
   }
 
   .panel-title {
@@ -202,18 +99,6 @@
     @include up(md) {
       @include text(5xl);
     }
-  }
-
-  &__count {
-    margin-top: 0.5rem;
-    color: $gray-400;
-  }
-
-  &__items {
-    margin-top: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
   }
 
   .panel-item {
@@ -228,18 +113,133 @@
     @include up(md) {
       @include text(base);
     }
-
-    &__icon {
-      @include center-grid;
-      flex-shrink: 0;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: $radius-xl;
-      background-color: fade($ink, 5%);
-    }
-
-    &__name {
-      line-height: $leading-snug;
-    }
   }
+}
+
+.skills__inner {
+  @include container($container-7xl);
+  padding-inline: $gutter;
+}
+
+.skills__layout {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+
+  @include up(lg) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    gap: 4rem;
+  }
+}
+
+.skills .galaxy__glow {
+  position: absolute;
+  inset: 20%;
+  border-radius: $radius-full;
+  background-image: radial-gradient(circle, rgb(249 115 22 / 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+.skills .soft-ring__text {
+  fill: #a78bfa;
+  font-size: 3.1px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.skills .planet-bubble__icon {
+  width: 1rem;
+  height: 1rem;
+
+  @include up(sm) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.skills .planet-bubble__abbr {
+  font-size: 9px;
+  font-weight: 700;
+
+  @include up(sm) {
+    @include text(xs);
+  }
+}
+
+.skills .core__ping {
+  @include fill;
+  border-radius: $radius-full;
+  background-color: fade($orange-500, 30%);
+  @include animate-ping;
+}
+
+.skills__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid fade($ink, 15%);
+  border-radius: $radius-full;
+  @include text(sm);
+  font-weight: 500;
+  color: $gray-300;
+  @include transition-colors;
+
+  @include hover {
+    border-color: fade($ink, 40%);
+  }
+}
+
+.skills__tab.is-active {
+  border-color: transparent;
+  background-color: $ink;
+  color: $paper;
+}
+
+.skills__swatch {
+  flex-shrink: 0;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: $radius-full;
+}
+
+.skills__panel {
+  margin-top: 2rem;
+  min-height: 16rem;
+}
+
+.skills__title-mask {
+  overflow: hidden;
+}
+
+.skills__count {
+  margin-top: 0.5rem;
+  color: $gray-400;
+}
+
+.skills__items {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.skills .panel-item__icon {
+  @include center-grid;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: $radius-xl;
+  background-color: fade($ink, 5%);
+}
+
+.skills .panel-item__name {
+  line-height: $leading-snug;
 }

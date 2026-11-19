@@ -22,59 +22,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     display: none;
   }
 
-  &__deck {
-    position: relative;
-    margin-inline: auto;
-    width: 100%;
-    height: min(680px, calc(100svh - 17rem));
-    min-height: 420px;
-    overflow: hidden;
-    border: 1px solid $deck-border;
-    border-radius: 28px;
-    background-color: $deck-bg;
-    color: $deck-text;
-    box-shadow: shadow-2xl(fade($orange-500, 20%));
-    perspective: 1200px;
-    touch-action: pan-y;
-    user-select: none;
-
-    @include up(sm) {
-      max-width: $container-xl;
-    }
-
-    @include up(md) {
-      max-width: $container-2xl;
-    }
-
-    &:focus-visible {
-      outline: 2px solid #fdba74;
-      outline-offset: 4px;
-    }
-  }
-
-  &__header {
-    position: absolute;
-    inset-inline: 0;
-    top: 0;
-    z-index: 20;
-    padding: 0.75rem 1rem 1.5rem;
-    background-image: linear-gradient(to bottom, #120e0ccc, transparent);
-    pointer-events: none;
-  }
-
-  &__segments {
-    display: flex;
-    gap: 0.25rem;
-  }
-
-  &__segment {
-    flex: 1;
-    height: 3px;
-    overflow: hidden;
-    border-radius: $radius-full;
-    background-color: #ffffff40;
-  }
-
   .seg-fill {
     display: block;
     height: 100%;
@@ -82,83 +29,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     scale: 0 1;
     border-radius: $radius-full;
     background-color: #fff;
-  }
-
-  &__meta {
-    margin-top: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-  }
-
-  &__avatar {
-    @include center-grid;
-    width: 2rem;
-    height: 2rem;
-    border-radius: $radius-full;
-    background-image: $story-gradient;
-    @include text(xs);
-    font-weight: 700;
-    color: #fff;
-  }
-
-  &__name {
-    @include text(sm);
-    font-weight: 600;
-  }
-
-  &__label {
-    @include text(sm);
-    color: $deck-muted;
-  }
-
-  &__btn {
-    @include center-grid;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: $radius-full;
-    background-color: $deck-button;
-    @include transition-colors;
-
-    @include hover {
-      background-color: $deck-button-hover;
-    }
-
-    &--pause {
-      margin-left: auto;
-      width: 2.25rem;
-      height: 2.25rem;
-      pointer-events: auto;
-    }
-  }
-
-  &__footer {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem 1rem;
-  }
-
-  &__count {
-    @include mono(sm);
-    color: $deck-muted;
-  }
-
-  &__hint {
-    margin: 1rem auto 0;
-    max-width: $container-md;
-    padding-inline: 1rem;
-    text-align: center;
-    @include text(sm);
-    color: $gray-500;
-
-    @include up(sm) {
-      padding-inline: 0;
-    }
   }
 }
 
@@ -174,119 +44,12 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     padding-bottom: 4rem;
   }
 
-  &--code {
-    padding-inline: 1rem;
-  }
-
-  &--center {
-    justify-content: center;
-  }
-
-  &--motto {
-    justify-content: flex-end;
-    padding: 6rem 1.5rem;
-    background-image: linear-gradient(to bottom right in oklab, #d97706, #ea580c, #e11d48);
-
-    @include short {
-      padding-block: 5rem;
-    }
-  }
-
-  &__bg {
-    @include fill;
-    z-index: -1;
-    pointer-events: none;
-
-    &--code {
-      background-image: radial-gradient(ellipse at top, #f59e0b33, transparent 60%);
-    }
-    &--profile {
-      background-image:
-        radial-gradient(circle at 30% 30%, #f59e0b59, transparent 55%),
-        radial-gradient(circle at 80% 80%, #f973164d, transparent 50%);
-    }
-    &--toolkit {
-      background-image: radial-gradient(circle at 70% 20%, #f9731659, transparent 55%);
-    }
-    &--story {
-      background-image: radial-gradient(circle at 20% 80%, #f43f5e4d, transparent 55%);
-    }
-    &--work {
-      background-image: radial-gradient(circle at 80% 30%, #f59e0b4d, transparent 55%);
-    }
-  }
-
   .st-editor {
     overflow: hidden;
     border: 1px solid $editor-border;
     border-radius: $radius-2xl;
     background-color: $editor-bg;
     box-shadow: shadow-2xl();
-
-    &__bar {
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-      padding: 0.625rem 0.75rem;
-      border-bottom: 1px solid $editor-border;
-      background-color: $editor-bar;
-    }
-
-    &__light {
-      width: 0.625rem;
-      height: 0.625rem;
-      border-radius: $radius-full;
-
-      &--red {
-        background-color: $editor-red;
-      }
-      &--yellow {
-        background-color: $editor-yellow;
-      }
-      &--green {
-        background-color: $editor-green;
-      }
-    }
-
-    &__file {
-      margin-left: 0.5rem;
-      font-family: $font-mono;
-      font-size: 11px;
-      color: $editor-muted;
-    }
-
-    &__status {
-      position: relative;
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-      font-family: $font-mono;
-      font-size: 11px;
-      color: $editor-muted;
-    }
-
-    &__code {
-      padding: 0.875rem;
-      font-family: $font-mono;
-      font-size: 11px;
-      line-height: 1.5rem;
-      color: $editor-text;
-
-      @include up(sm) {
-        font-size: 13px;
-      }
-
-      @include up(md) {
-        padding: 1.25rem;
-        font-size: 15px;
-        line-height: 2rem;
-      }
-
-      @include short {
-        line-height: 1.25rem;
-      }
-    }
   }
 
   .st-dot {
@@ -309,15 +72,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     overflow-wrap: break-word;
     padding-left: 1.5rem;
     text-indent: -1.5rem;
-
-    &__num {
-      display: inline-block;
-      width: 1rem;
-      margin-right: 0.5rem;
-      text-align: right;
-      color: $editor-line-number;
-      user-select: none;
-    }
   }
 
   .st-hint {
@@ -348,67 +102,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  &__name {
-    margin-top: 2rem;
-    @include text(5xl);
-    font-weight: 700;
-    letter-spacing: $tracking-tight;
-
-    @include short {
-      margin-top: 1.25rem;
-    }
-  }
-
-  &__title {
-    margin-top: 0.75rem;
-    @include text(xl);
-    font-weight: 600;
-    @include gradient-text(linear-gradient(to right, #fbbf24, #fb923c));
-  }
-
-  &__location {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    @include text(lg);
-    color: #e2e8f0;
-
-    svg {
-      color: #fb7185;
-    }
-  }
-
-  &__time {
-    margin-top: 0.5rem;
-    @include mono(sm);
-    color: #94a3b8;
-  }
-
-  &__heading {
-    @include text(sm);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #fed7aa;
-
-    &--stack {
-      margin-top: 2.5rem;
-      color: #fcd34d;
-
-      @include short {
-        margin-top: 1.5rem;
-      }
-    }
-  }
-
-  &__chips {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
   .st-chip {
     padding: 0.5rem 1rem;
     border: 1px solid #fb923c66;
@@ -420,17 +113,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     @include short {
       padding-block: 0.375rem;
       @include text(sm);
-    }
-  }
-
-  &__stack {
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-
-    @include short {
-      gap: 0.5rem;
     }
   }
 
@@ -446,10 +128,6 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     @include short {
       padding: 0.5rem;
     }
-
-    &__name {
-      font-weight: 500;
-    }
   }
 
   .st-words {
@@ -463,63 +141,10 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
     }
   }
 
-  &__steps {
-    position: relative;
-  }
-
-  &__path {
-    position: absolute;
-    top: 1.5rem;
-    bottom: 1.5rem;
-    left: 19px;
-    width: 0.25rem;
-    height: calc(100% - 3rem);
-    pointer-events: none;
-  }
-
-  &__step-list {
-    @include stack(1.75rem);
-
-    @include short {
-      @include stack(1rem);
-    }
-  }
-
   .st-step {
     position: relative;
     display: flex;
     gap: 1rem;
-
-    &__icon {
-      position: relative;
-      z-index: $z-content;
-      @include center-grid;
-      flex-shrink: 0;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: $radius-full;
-      background-image: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$story-orange});
-      color: #fff;
-    }
-
-    &__title {
-      @include text(2xl);
-      font-weight: 700;
-      letter-spacing: $tracking-tight;
-
-      @include short {
-        @include text(xl);
-      }
-    }
-
-    &__text {
-      margin-top: 0.25rem;
-      color: #cbd5e1;
-
-      @include short {
-        @include text(sm);
-      }
-    }
   }
 
   .st-motto {
@@ -533,35 +158,415 @@ $story-gradient: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$s
       vertical-align: top;
     }
   }
+}
 
-  &__actions {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+.stories__deck {
+  position: relative;
+  margin-inline: auto;
+  width: 100%;
+  height: min(680px, calc(100svh - 17rem));
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid $deck-border;
+  border-radius: 28px;
+  background-color: $deck-bg;
+  color: $deck-text;
+  box-shadow: shadow-2xl(fade($orange-500, 20%));
+  perspective: 1200px;
+  touch-action: pan-y;
+  user-select: none;
 
-    @include short {
-      margin-top: 1.5rem;
-    }
+  @include up(sm) {
+    max-width: $container-xl;
   }
 
-  &__talk,
-  &__cv {
-    padding: 0.75rem 1.5rem;
-    border-radius: $radius-full;
-    font-weight: 600;
+  @include up(md) {
+    max-width: $container-2xl;
   }
 
-  &__talk {
-    background-color: #fff;
-    color: #111827;
+  &:focus-visible {
+    outline: 2px solid #fdba74;
+    outline-offset: 4px;
+  }
+}
+
+.stories__header {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 20;
+  padding: 0.75rem 1rem 1.5rem;
+  background-image: linear-gradient(to bottom, #120e0ccc, transparent);
+  pointer-events: none;
+}
+
+.stories__segments {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.stories__segment {
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: $radius-full;
+  background-color: #ffffff40;
+}
+
+.stories__meta {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.stories__avatar {
+  @include center-grid;
+  width: 2rem;
+  height: 2rem;
+  border-radius: $radius-full;
+  background-image: $story-gradient;
+  @include text(xs);
+  font-weight: 700;
+  color: #fff;
+}
+
+.stories__name {
+  @include text(sm);
+  font-weight: 600;
+}
+
+.stories__label {
+  @include text(sm);
+  color: $deck-muted;
+}
+
+.stories__btn {
+  @include center-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: $radius-full;
+  background-color: $deck-button;
+  @include transition-colors;
+
+  @include hover {
+    background-color: $deck-button-hover;
+  }
+}
+
+.stories__btn--pause {
+  margin-left: auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  pointer-events: auto;
+}
+
+.stories__footer {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 1rem;
+}
+
+.stories__count {
+  @include mono(sm);
+  color: $deck-muted;
+}
+
+.stories__hint {
+  margin: 1rem auto 0;
+  max-width: $container-md;
+  padding-inline: 1rem;
+  text-align: center;
+  @include text(sm);
+  color: $gray-500;
+
+  @include up(sm) {
+    padding-inline: 0;
+  }
+}
+
+.story--code {
+  padding-inline: 1rem;
+}
+
+.story--center {
+  justify-content: center;
+}
+
+.story--motto {
+  justify-content: flex-end;
+  padding: 6rem 1.5rem;
+  background-image: linear-gradient(to bottom right in oklab, #d97706, #ea580c, #e11d48);
+
+  @include short {
+    padding-block: 5rem;
+  }
+}
+
+.story__bg {
+  @include fill;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.story__bg--code {
+  background-image: radial-gradient(ellipse at top, #f59e0b33, transparent 60%);
+}
+
+.story__bg--profile {
+ background-image:
+   radial-gradient(circle at 30% 30%, #f59e0b59, transparent 55%),
+   radial-gradient(circle at 80% 80%, #f973164d, transparent 50%);
+}
+
+.story__bg--toolkit {
+ background-image: radial-gradient(circle at 70% 20%, #f9731659, transparent 55%);
+}
+
+.story__bg--story {
+ background-image: radial-gradient(circle at 20% 80%, #f43f5e4d, transparent 55%);
+}
+
+.story__bg--work {
+ background-image: radial-gradient(circle at 80% 30%, #f59e0b4d, transparent 55%);
+}
+
+.story .st-editor__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid $editor-border;
+  background-color: $editor-bar;
+}
+
+.story .st-editor__light {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: $radius-full;
+}
+
+.story .st-editor__light--red {
+  background-color: $editor-red;
+}
+
+.story .st-editor__light--yellow {
+ background-color: $editor-yellow;
+}
+
+.story .st-editor__light--green {
+ background-color: $editor-green;
+}
+
+.story .st-editor__file {
+  margin-left: 0.5rem;
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $editor-muted;
+}
+
+.story .st-editor__status {
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $editor-muted;
+}
+
+.story .st-editor__code {
+  padding: 0.875rem;
+  font-family: $font-mono;
+  font-size: 11px;
+  line-height: 1.5rem;
+  color: $editor-text;
+
+  @include up(sm) {
+    font-size: 13px;
   }
 
-  &__cv {
-    display: flex;
-    align-items: center;
+  @include up(md) {
+    padding: 1.25rem;
+    font-size: 15px;
+    line-height: 2rem;
+  }
+
+  @include short {
+    line-height: 1.25rem;
+  }
+}
+
+.story .st-line__num {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.5rem;
+  text-align: right;
+  color: $editor-line-number;
+  user-select: none;
+}
+
+.story__name {
+  margin-top: 2rem;
+  @include text(5xl);
+  font-weight: 700;
+  letter-spacing: $tracking-tight;
+
+  @include short {
+    margin-top: 1.25rem;
+  }
+}
+
+.story__title {
+  margin-top: 0.75rem;
+  @include text(xl);
+  font-weight: 600;
+  @include gradient-text(linear-gradient(to right, #fbbf24, #fb923c));
+}
+
+.story__location {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  @include text(lg);
+  color: #e2e8f0;
+
+  svg {
+    color: #fb7185;
+  }
+}
+
+.story__time {
+  margin-top: 0.5rem;
+  @include mono(sm);
+  color: #94a3b8;
+}
+
+.story__heading {
+  @include text(sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fed7aa;
+}
+
+.story__heading--stack {
+  margin-top: 2.5rem;
+  color: #fcd34d;
+
+  @include short {
+    margin-top: 1.5rem;
+  }
+}
+
+.story__chips {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.story__stack {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+
+  @include short {
     gap: 0.5rem;
-    color: #fff;
-    box-shadow: 0 0 0 2px #ffffffa6;
   }
+}
+
+.story .st-logo__name {
+  font-weight: 500;
+}
+
+.story__steps {
+  position: relative;
+}
+
+.story__path {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 19px;
+  width: 0.25rem;
+  height: calc(100% - 3rem);
+  pointer-events: none;
+}
+
+.story__step-list {
+  @include stack(1.75rem);
+
+  @include short {
+    @include stack(1rem);
+  }
+}
+
+.story .st-step__icon {
+  position: relative;
+  z-index: $z-content;
+  @include center-grid;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: $radius-full;
+  background-image: linear-gradient(to bottom right in oklab, #{$story-amber}, #{$story-orange});
+  color: #fff;
+}
+
+.story .st-step__title {
+  @include text(2xl);
+  font-weight: 700;
+  letter-spacing: $tracking-tight;
+
+  @include short {
+    @include text(xl);
+  }
+}
+
+.story .st-step__text {
+  margin-top: 0.25rem;
+  color: #cbd5e1;
+
+  @include short {
+    @include text(sm);
+  }
+}
+
+.story__actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  @include short {
+    margin-top: 1.5rem;
+  }
+}
+
+.story__talk, .story__cv {
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-full;
+  font-weight: 600;
+}
+
+.story__talk {
+  background-color: #fff;
+  color: #111827;
+}
+
+.story__cv {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  box-shadow: 0 0 0 2px #ffffffa6;
 }

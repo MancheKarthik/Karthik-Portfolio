@@ -9,19 +9,6 @@
 
 .preloader-panel {
   @include fill;
-
-  &--color {
-    background-image: linear-gradient(to bottom right in oklab, #{$gold-600}, #{$orange-600}, #{$rose-500});
-  }
-
-  &--main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: $surface-deep;
-    pointer-events: auto;
-  }
 }
 
 .preloader-name {
@@ -61,4 +48,17 @@
   @include up(md) {
     @include text(8xl);
   }
+}
+
+.preloader-panel--color {
+  background-image: linear-gradient(to bottom right in oklab, #{$gold-600}, #{$orange-600}, #{$rose-500});
+}
+
+.preloader-panel--main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $surface-deep;
+  pointer-events: auto;
 }

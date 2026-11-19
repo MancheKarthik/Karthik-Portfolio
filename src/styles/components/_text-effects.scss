@@ -13,16 +13,6 @@
     font-size: 1.7rem;
   }
 
-  &__letters {
-    display: flex;
-  }
-
-  &__mask {
-    display: inline-block;
-    overflow: hidden;
-    padding-bottom: 0.12em;
-  }
-
   .logo-char,
   .logo-roll {
     display: inline-block;
@@ -30,17 +20,6 @@
 
   .logo-roll {
     position: relative;
-  }
-
-  &__glyph {
-    display: block;
-
-    &--hover {
-      position: absolute;
-      left: 0;
-      top: calc(100% + 0.22em);
-      @include gradient-text(warm-gradient(to bottom));
-    }
   }
 
   .logo-dot {
@@ -55,29 +34,10 @@
 }
 
 .roll-text {
-  &__letters {
-    display: inline-flex;
-  }
-
-  &__mask {
-    display: inline-block;
-    overflow: hidden;
-  }
-
   .roll-inner {
     position: relative;
     display: inline-block;
     padding-bottom: 0.12em;
-  }
-
-  &__copy {
-    position: absolute;
-    left: 0;
-    top: 100%;
-
-    &--gradient {
-      @include gradient-text;
-    }
   }
 }
 
@@ -96,24 +56,6 @@
     gap: 1rem;
     @include eyebrow(0.35em);
     color: $orange-400;
-  }
-
-  &__rule {
-    flex: 1;
-    max-width: 12rem;
-    height: 1px;
-    background-image: linear-gradient(to right, #{fade($orange-400, 60%)}, transparent);
-  }
-
-  &__title {
-    margin-bottom: 1.5rem;
-    @include text(4xl);
-    font-weight: 700;
-    letter-spacing: $tracking-tight;
-
-    @include up(md) {
-      @include text(6xl);
-    }
   }
 
   .heading-lead {
@@ -157,4 +99,62 @@
 }
 .tok-key {
   color: #fb923c;
+}
+
+.logo__letters {
+  display: flex;
+}
+
+.logo__mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+}
+
+.logo__glyph {
+  display: block;
+}
+
+.logo__glyph--hover {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.22em);
+  @include gradient-text(warm-gradient(to bottom));
+}
+
+.roll-text__letters {
+ display: inline-flex;
+}
+
+.roll-text__mask {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.roll-text__copy {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.roll-text__copy--gradient {
+  @include gradient-text;
+}
+
+.section-heading__rule {
+  flex: 1;
+  max-width: 12rem;
+  height: 1px;
+  background-image: linear-gradient(to right, #{fade($orange-400, 60%)}, transparent);
+}
+
+.section-heading__title {
+  margin-bottom: 1.5rem;
+  @include text(4xl);
+  font-weight: 700;
+  letter-spacing: $tracking-tight;
+
+  @include up(md) {
+    @include text(6xl);
+  }
 }

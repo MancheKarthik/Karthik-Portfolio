@@ -84,24 +84,6 @@
     position: relative;
     height: 13rem;
     overflow: hidden;
-
-    &__frame {
-      position: absolute;
-      inset-block: 0;
-      inset-inline: -10%;
-    }
-
-    &__img {
-      object-fit: cover;
-      @include transition-transform(700ms);
-    }
-
-    &__shade {
-      @include fill;
-      background-image: linear-gradient(to top, rgb(0 0 0 / 0.7), transparent, transparent);
-      opacity: 0;
-      transition: opacity 300ms $ease;
-    }
   }
 
   .project-links {
@@ -124,54 +106,6 @@
     &:focus-visible {
       outline: none;
     }
-
-    &--github {
-      gap: 0.5rem;
-      padding-inline: 1rem;
-      border: 2px solid fade($ink, 70%);
-      background-color: fade($paper, 85%);
-      font-weight: 700;
-      color: $ink;
-      box-shadow: shadow-xl(fade($paper, 60%));
-      @include glass(12px);
-
-      @include hover {
-        translate: 0 -0.125rem;
-        border-color: $ink;
-        background-color: $ink;
-        color: $paper;
-      }
-
-      &:focus-visible {
-        box-shadow: 0 0 0 2px $paper, 0 0 0 4px $ink;
-      }
-    }
-
-    &--live {
-      gap: 0.375rem;
-      padding: 0 0.75rem 0 1rem;
-      background-image: warm-gradient();
-      font-weight: 800;
-      color: $paper;
-      box-shadow: 0 0 0 2px fade($ink, 80%), shadow-xl(fade($paper, 60%));
-
-      @include hover {
-        translate: 0 -0.125rem;
-        filter: brightness(1.1);
-
-        .project-link__arrow {
-          translate: 0.125rem -0.125rem;
-        }
-      }
-
-      &:focus-visible {
-        box-shadow: 0 0 0 4px $ink, shadow-xl(fade($paper, 60%));
-      }
-    }
-
-    &__arrow {
-      @include transition-transform(300ms);
-    }
   }
 
   .project-num {
@@ -193,40 +127,6 @@
       #{fade($orange-500, 20%)},
       #{fade($rose-500, 30%)}
     );
-
-    &__grid {
-      @include fill;
-      opacity: 0.2;
-    }
-
-    &__icon {
-      position: absolute;
-      right: -1.5rem;
-      top: -1.5rem;
-      color: fade($ink, 10%);
-      @include transition-transform(700ms);
-    }
-
-    &__tags {
-      position: absolute;
-      left: 1.25rem;
-      top: 1.25rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.375rem;
-
-      span {
-        padding: 0.125rem 0.5rem;
-        border-radius: $radius-sm;
-        background-color: fade($paper, 40%);
-        font-family: $font-mono;
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: $tracking-wider;
-        color: fade($ink, 80%);
-        @include glass(8px);
-      }
-    }
   }
 
   .project-body {
@@ -234,64 +134,164 @@
     flex: 1;
     flex-direction: column;
     padding: 1.5rem;
+  }
+}
 
-    &__title {
-      margin-bottom: 0.25rem;
-      @include text(xl);
-      font-weight: 700;
+.projects .project-media__frame {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: -10%;
+}
 
-      a:hover {
-        color: $gold-300;
-      }
+.projects .project-media__img {
+  object-fit: cover;
+  @include transition-transform(700ms);
+}
+
+.projects .project-media__shade {
+  @include fill;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 0.7), transparent, transparent);
+  opacity: 0;
+  transition: opacity 300ms $ease;
+}
+
+.projects .project-link--github {
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  border: 2px solid fade($ink, 70%);
+  background-color: fade($paper, 85%);
+  font-weight: 700;
+  color: $ink;
+  box-shadow: shadow-xl(fade($paper, 60%));
+  @include glass(12px);
+
+  @include hover {
+    translate: 0 -0.125rem;
+    border-color: $ink;
+    background-color: $ink;
+    color: $paper;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px $paper, 0 0 0 4px $ink;
+  }
+}
+
+.projects .project-link--live {
+  gap: 0.375rem;
+  padding: 0 0.75rem 0 1rem;
+  background-image: warm-gradient();
+  font-weight: 800;
+  color: $paper;
+  box-shadow: 0 0 0 2px fade($ink, 80%), shadow-xl(fade($paper, 60%));
+
+  @include hover {
+    translate: 0 -0.125rem;
+    filter: brightness(1.1);
+
+    .project-link__arrow {
+      translate: 0.125rem -0.125rem;
     }
+  }
 
-    &__kind {
-      margin-bottom: 1rem;
-      @include eyebrow(0.2em);
-      color: $orange-400;
-    }
+  &:focus-visible {
+    box-shadow: 0 0 0 4px $ink, shadow-xl(fade($paper, 60%));
+  }
+}
 
-    &__desc {
-      margin-bottom: 1rem;
-      color: $gray-300;
-    }
+.projects .project-link__arrow {
+  @include transition-transform(300ms);
+}
 
-    &__points {
-      flex: 1;
-      margin-bottom: 1.5rem;
-      @include stack(0.5rem);
-      @include text(sm);
-      color: $gray-400;
+.projects .project-cover__grid {
+  @include fill;
+  opacity: 0.2;
+}
 
-      li {
-        display: flex;
-        gap: 0.625rem;
-      }
-    }
+.projects .project-cover__icon {
+  position: absolute;
+  right: -1.5rem;
+  top: -1.5rem;
+  color: fade($ink, 10%);
+  @include transition-transform(700ms);
+}
 
-    &__bullet {
-      flex-shrink: 0;
-      margin-top: 0.5rem;
-      width: 0.25rem;
-      height: 0.25rem;
-      border-radius: $radius-full;
-      background-color: $gold-400;
-    }
+.projects .project-cover__tags {
+  position: absolute;
+  left: 1.25rem;
+  top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
 
-    &__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+  span {
+    padding: 0.125rem 0.5rem;
+    border-radius: $radius-sm;
+    background-color: fade($paper, 40%);
+    font-family: $font-mono;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: fade($ink, 80%);
+    @include glass(8px);
+  }
+}
 
-      li {
-        padding: 0.25rem 0.625rem;
-        border: 1px solid fade($gold-500, 30%);
-        border-radius: $radius-md;
-        background-color: fade($gold-500, 10%);
-        @include mono(xs);
-        font-weight: 500;
-        color: $gold-300;
-      }
-    }
+.projects .project-body__title {
+  margin-bottom: 0.25rem;
+  @include text(xl);
+  font-weight: 700;
+
+  a:hover {
+    color: $gold-300;
+  }
+}
+
+.projects .project-body__kind {
+  margin-bottom: 1rem;
+  @include eyebrow(0.2em);
+  color: $orange-400;
+}
+
+.projects .project-body__desc {
+  margin-bottom: 1rem;
+  color: $gray-300;
+}
+
+.projects .project-body__points {
+  flex: 1;
+  margin-bottom: 1.5rem;
+  @include stack(0.5rem);
+  @include text(sm);
+  color: $gray-400;
+
+  li {
+    display: flex;
+    gap: 0.625rem;
+  }
+}
+
+.projects .project-body__bullet {
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: $radius-full;
+  background-color: $gold-400;
+}
+
+.projects .project-body__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  li {
+    padding: 0.25rem 0.625rem;
+    border: 1px solid fade($gold-500, 30%);
+    border-radius: $radius-md;
+    background-color: fade($gold-500, 10%);
+    @include mono(xs);
+    font-weight: 500;
+    color: $gold-300;
   }
 }

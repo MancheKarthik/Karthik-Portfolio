@@ -8,39 +8,6 @@
   border-bottom: 1px solid transparent;
   transition: background-color 500ms $ease, border-color 500ms $ease, backdrop-filter 500ms $ease;
 
-  &.is-scrolled {
-    background-color: color-mix(in oklab, #{$paper} 55%, transparent);
-    border-color: rgb(var(--fg-rgb) / 0.06);
-    -webkit-backdrop-filter: blur(16px) saturate(1.4);
-    backdrop-filter: blur(16px) saturate(1.4);
-  }
-
-  &__inner {
-    @include container($container-7xl);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1rem $gutter;
-    transition: padding 500ms $ease;
-
-    @include up(md) {
-      padding-inline: 2rem;
-    }
-
-    .is-scrolled & {
-      padding-block: 0.75rem;
-    }
-  }
-
-  &__menu {
-    display: none;
-
-    @include up(md) {
-      display: block;
-    }
-  }
-
   .nav-shell {
     position: relative;
     isolation: isolate;
@@ -51,21 +18,6 @@
     border-radius: $radius-full;
     background-color: fade($paper, 70%);
     @include glass(24px);
-  }
-
-  &__pill {
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    top: 0.25rem;
-    bottom: 0.25rem;
-    width: 0;
-    border-radius: $radius-full;
-    background-color: $ink;
-  }
-
-  &__item {
-    overflow: hidden;
   }
 
   .nav-tab {
@@ -82,43 +34,6 @@
 
     @include up(lg) {
       padding-inline: 1.25rem;
-    }
-
-    &__num {
-      font-family: $font-mono;
-      font-size: 9px;
-      line-height: $leading-none;
-      opacity: 0.5;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-
-    @include up(md) {
-      gap: 1rem;
-    }
-  }
-
-  &__clock {
-    display: none;
-    align-items: center;
-    gap: 0.5rem;
-    @include eyebrow($tracking-widest);
-    color: $gray-400;
-
-    @include up(lg) {
-      display: flex;
-    }
-  }
-
-  &__cta-wrap {
-    display: none;
-
-    @include up(md) {
-      display: block;
     }
   }
 
@@ -140,43 +55,6 @@
       .nav-cta__arrow {
         rotate: 45deg;
       }
-    }
-
-    &__status {
-      position: relative;
-      display: flex;
-      width: 0.5rem;
-      height: 0.5rem;
-    }
-
-    &__ping {
-      position: absolute;
-      display: inline-flex;
-      width: 100%;
-      height: 100%;
-      border-radius: $radius-full;
-      background-color: $emerald-400;
-      opacity: 0.75;
-      @include animate-ping;
-    }
-
-    &__dot {
-      position: relative;
-      display: inline-flex;
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: $radius-full;
-      background-color: $emerald-500;
-    }
-
-    &__arrow {
-      @include center-grid;
-      width: 1.75rem;
-      height: 1.75rem;
-      border-radius: $radius-full;
-      background-color: $paper;
-      color: $ink;
-      @include transition-transform(500ms);
     }
   }
 
@@ -237,33 +115,6 @@
   padding: 7rem $gutter 2.5rem;
   background-color: $surface-deep;
 
-  &__glow {
-    position: absolute;
-    right: -6rem;
-    top: 33.333%;
-    width: 18rem;
-    height: 18rem;
-    border-radius: $radius-full;
-    background-color: fade($orange-600, 30%);
-    filter: blur(100px);
-    pointer-events: none;
-  }
-
-  &__label {
-    @include eyebrow(0.3em);
-    color: $gray-500;
-  }
-
-  &__list {
-    @include stack(0.5rem);
-  }
-
-  &__item {
-    overflow: hidden;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid fade($ink, 10%);
-  }
-
   .mobile-link {
     display: flex;
     align-items: baseline;
@@ -272,58 +123,207 @@
     font-weight: 700;
     letter-spacing: $tracking-tight;
     color: fade($ink, 70%);
-
-    &.is-active {
-      color: $ink;
-    }
-
-    &__num {
-      @include mono(sm);
-      font-weight: 400;
-      color: $gray-500;
-    }
-  }
-
-  &__bottom {
-    @include stack(1.5rem);
-  }
-
-  &__email {
-    display: block;
-    @include text(lg);
-    color: $gray-300;
-    text-underline-offset: 4px;
-
-    @include hover {
-      text-decoration: underline;
-    }
-  }
-
-  &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__socials {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  &__social {
-    @include center-grid;
-    width: 2.75rem;
-    height: 2.75rem;
-    border: 1px solid fade($ink, 15%);
-    border-radius: $radius-full;
-  }
-
-  &__clock {
-    @include eyebrow($tracking-widest);
-    color: $gray-500;
   }
 
   @include up(md) {
     display: none;
   }
+}
+
+.site-nav.is-scrolled {
+  background-color: color-mix(in oklab, #{$paper} 55%, transparent);
+  border-color: rgb(var(--fg-rgb) / 0.06);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+}
+
+.site-nav__inner {
+  @include container($container-7xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem $gutter;
+  transition: padding 500ms $ease;
+
+  @include up(md) {
+    padding-inline: 2rem;
+  }
+
+  .is-scrolled & {
+    padding-block: 0.75rem;
+  }
+}
+
+.site-nav__menu {
+  display: none;
+
+  @include up(md) {
+    display: block;
+  }
+}
+
+.site-nav__pill {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 0;
+  border-radius: $radius-full;
+  background-color: $ink;
+}
+
+.site-nav__item {
+  overflow: hidden;
+}
+
+.site-nav .nav-tab__num {
+  font-family: $font-mono;
+  font-size: 9px;
+  line-height: $leading-none;
+  opacity: 0.5;
+}
+
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  @include up(md) {
+    gap: 1rem;
+  }
+}
+
+.site-nav__clock {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  @include eyebrow($tracking-widest);
+  color: $gray-400;
+
+  @include up(lg) {
+    display: flex;
+  }
+}
+
+.site-nav__cta-wrap {
+  display: none;
+
+  @include up(md) {
+    display: block;
+  }
+}
+
+.site-nav .nav-cta__status {
+  position: relative;
+  display: flex;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.site-nav .nav-cta__ping {
+  position: absolute;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-full;
+  background-color: $emerald-400;
+  opacity: 0.75;
+  @include animate-ping;
+}
+
+.site-nav .nav-cta__dot {
+  position: relative;
+  display: inline-flex;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: $radius-full;
+  background-color: $emerald-500;
+}
+
+.site-nav .nav-cta__arrow {
+  @include center-grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: $radius-full;
+  background-color: $paper;
+  color: $ink;
+  @include transition-transform(500ms);
+}
+
+.mobile-menu__glow {
+  position: absolute;
+  right: -6rem;
+  top: 33.333%;
+  width: 18rem;
+  height: 18rem;
+  border-radius: $radius-full;
+  background-color: fade($orange-600, 30%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.mobile-menu__label {
+  @include eyebrow(0.3em);
+  color: $gray-500;
+}
+
+.mobile-menu__list {
+  @include stack(0.5rem);
+}
+
+.mobile-menu__item {
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid fade($ink, 10%);
+}
+
+.mobile-menu .mobile-link.is-active {
+  color: $ink;
+}
+
+.mobile-menu .mobile-link__num {
+  @include mono(sm);
+  font-weight: 400;
+  color: $gray-500;
+}
+
+.mobile-menu__bottom {
+  @include stack(1.5rem);
+}
+
+.mobile-menu__email {
+  display: block;
+  @include text(lg);
+  color: $gray-300;
+  text-underline-offset: 4px;
+
+  @include hover {
+    text-decoration: underline;
+  }
+}
+
+.mobile-menu__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu__socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.mobile-menu__social {
+  @include center-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid fade($ink, 15%);
+  border-radius: $radius-full;
+}
+
+.mobile-menu__clock {
+  @include eyebrow($tracking-widest);
+  color: $gray-500;
 }

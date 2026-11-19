@@ -126,7 +126,7 @@ export function Hero({ ready }: { ready: boolean }) {
           </p>
 
           <p className="hero-sub hero__lead">
-          I build thoughtful digital experiences that blend creativity with technology. From crafting responsive interfaces to developing interactive websites, I enjoy turning ideas into functional, visually engaging experiences. Always curious, constantly experimenting, and driven by the details that make the difference.
+          I build thoughtful digital experiences that blend creativity with technology. From crafting responsive interfaces and interactive websites to exploring data with Python and building insightful Power BI dashboards, I enjoy turning ideas and data into meaningful, functional solutions. Always curious, constantly experimenting, and driven by the details that make the difference.
           </p>
 
           <div className="hero-cta">

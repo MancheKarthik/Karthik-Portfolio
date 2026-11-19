@@ -3,10 +3,6 @@
 .about {
   @include section;
 
-  &__inner {
-    @include container($container-6xl);
-  }
-
   .about-desktop {
     display: none;
 
@@ -33,47 +29,6 @@
     background-color: $editor-bg;
     box-shadow: shadow-2xl(fade($orange-500, 10%));
 
-    &__bar {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid $editor-border;
-      background-color: $editor-bar;
-    }
-
-    &__light {
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: $radius-full;
-
-      &--red {
-        background-color: $editor-red;
-      }
-      &--yellow {
-        background-color: $editor-yellow;
-      }
-      &--green {
-        background-color: $editor-green;
-      }
-    }
-
-    &__file {
-      margin-left: 0.75rem;
-      @include mono(xs);
-      color: $editor-muted;
-    }
-
-    &__status {
-      position: relative;
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      @include mono(xs);
-      color: $editor-muted;
-    }
-
     .status-dot {
       width: 0.5rem;
       height: 0.5rem;
@@ -88,24 +43,6 @@
       color: $editor-success;
     }
 
-    &__code {
-      overflow-x: auto;
-      padding: 1.25rem;
-      font-family: $font-mono;
-      font-size: 12px;
-      line-height: 1.75rem;
-      color: $editor-text;
-
-      @include up(sm) {
-        font-size: 13px;
-      }
-
-      @include up(md) {
-        padding: 1.5rem;
-        font-size: 15px;
-      }
-    }
-
     .code-line {
       display: block;
       white-space: pre-wrap;
@@ -118,20 +55,7 @@
         padding-left: 0;
         text-indent: 0;
       }
-
-      &__num {
-        display: inline-block;
-        width: 1rem;
-        margin-right: 1rem;
-        text-align: right;
-        color: $editor-line-number;
-        user-select: none;
-      }
     }
-  }
-
-  &__output {
-    position: relative;
   }
 
   .profile-glow {
@@ -157,56 +81,6 @@
       padding: 2rem;
     }
 
-    &__head {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    &__avatar {
-      @include avatar;
-    }
-
-    &__name {
-      @include text(2xl);
-      font-weight: 700;
-      letter-spacing: $tracking-tight;
-    }
-
-    &__tagline {
-      @include text(sm);
-      color: $gray-400;
-    }
-
-    &__role {
-      margin-top: 1.5rem;
-      @include text(lg);
-      font-weight: 600;
-    }
-
-    &__role-text {
-      @include gradient-text;
-    }
-
-    &__location {
-      margin-top: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: $gray-300;
-
-      svg {
-        color: $rose-400;
-      }
-    }
-
-    &__chips {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
     .strength-chip {
       padding: 0.25rem 0.75rem;
       border: 1px solid fade($orange-400, 30%);
@@ -216,12 +90,6 @@
       color: $orange-300;
     }
 
-    &__stack {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 0.75rem;
-    }
-
     .stack-logo {
       @include center-grid;
       width: 3rem;
@@ -229,15 +97,6 @@
       border: 1px solid fade($ink, 10%);
       border-radius: $radius-xl;
       background-color: fade($ink, 4%);
-    }
-
-    &__motto {
-      position: relative;
-      margin-top: 1.75rem;
-      display: inline-block;
-      @include text(lg);
-      font-style: italic;
-      color: $gray-200;
     }
 
     .motto-underline {
@@ -269,29 +128,6 @@
   .process {
     position: relative;
     margin-top: 4rem;
-
-    &__line {
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      display: none;
-      width: 100%;
-      height: 5rem;
-      pointer-events: none;
-
-      @include up(lg) {
-        display: block;
-      }
-    }
-
-    &__list {
-      display: grid;
-      gap: 1.5rem;
-
-      @include up(lg) {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
   }
 
   .pillar {
@@ -333,32 +169,198 @@
         scale: 1.1;
       }
     }
-
-    &__head {
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &__icon {
-      color: $orange-400;
-      @include transition-transform(500ms);
-    }
-
-    &__num {
-      @include mono(sm);
-      color: $gray-500;
-    }
-
-    &__title {
-      margin-bottom: 0.75rem;
-      @include text(2xl);
-      font-weight: 600;
-    }
-
-    &__text {
-      color: $gray-400;
-    }
   }
+}
+
+.about__inner {
+  @include container($container-6xl);
+}
+
+.about .code-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid $editor-border;
+  background-color: $editor-bar;
+}
+
+.about .code-card__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: $radius-full;
+}
+
+.about .code-card__light--red {
+  background-color: $editor-red;
+}
+
+.about .code-card__light--yellow {
+ background-color: $editor-yellow;
+}
+
+.about .code-card__light--green {
+ background-color: $editor-green;
+}
+
+.about .code-card__file {
+  margin-left: 0.75rem;
+  @include mono(xs);
+  color: $editor-muted;
+}
+
+.about .code-card__status {
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  @include mono(xs);
+  color: $editor-muted;
+}
+
+.about .code-card__code {
+  overflow-x: auto;
+  padding: 1.25rem;
+  font-family: $font-mono;
+  font-size: 12px;
+  line-height: 1.75rem;
+  color: $editor-text;
+
+  @include up(sm) {
+    font-size: 13px;
+  }
+
+  @include up(md) {
+    padding: 1.5rem;
+    font-size: 15px;
+  }
+}
+
+.about .code-card .code-line__num {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: $editor-line-number;
+  user-select: none;
+}
+
+.about__output {
+  position: relative;
+}
+
+.about .profile-card__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about .profile-card__avatar {
+  @include avatar;
+}
+
+.about .profile-card__name {
+  @include text(2xl);
+  font-weight: 700;
+  letter-spacing: $tracking-tight;
+}
+
+.about .profile-card__tagline {
+  @include text(sm);
+  color: $gray-400;
+}
+
+.about .profile-card__role {
+  margin-top: 1.5rem;
+  @include text(lg);
+  font-weight: 600;
+}
+
+.about .profile-card__role-text {
+  @include gradient-text;
+}
+
+.about .profile-card__location {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $gray-300;
+
+  svg {
+    color: $rose-400;
+  }
+}
+
+.about .profile-card__chips {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about .profile-card__stack {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.about .profile-card__motto {
+  position: relative;
+  margin-top: 1.75rem;
+  display: inline-block;
+  @include text(lg);
+  font-style: italic;
+  color: $gray-200;
+}
+
+.about .process__line {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 5rem;
+  pointer-events: none;
+
+  @include up(lg) {
+    display: block;
+  }
+}
+
+.about .process__list {
+  display: grid;
+  gap: 1.5rem;
+
+  @include up(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.about .pillar-body__head {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about .pillar-body__icon {
+  color: $orange-400;
+  @include transition-transform(500ms);
+}
+
+.about .pillar-body__num {
+  @include mono(sm);
+  color: $gray-500;
+}
+
+.about .pillar-body__title {
+  margin-bottom: 0.75rem;
+  @include text(2xl);
+  font-weight: 600;
+}
+
+.about .pillar-body__text {
+  color: $gray-400;
 }
