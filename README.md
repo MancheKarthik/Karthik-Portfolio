@@ -19,7 +19,7 @@ Built with **Next.js 15**, **React 19**, **TypeScript**, **SCSS** (see `src/styl
 Almost everything lives in [`src/data/portfolio.ts`](src/data/portfolio.ts): name, contact details, social links, experience, education, projects and skills.
 
 - Add your LinkedIn / GitHub URLs in `socials` (empty links are hidden).
-- Replace `public/Karthik-Manche-Resume.pdf` to update the resume.
+- Replace `public/Karthik_resume.pdf` to update the resume.
 - Add a project screenshot by putting an image in `public/` and setting `image: "/your-image.png"` on the project.
 
 ## Run locally

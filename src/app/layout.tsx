@@ -19,7 +19,7 @@ const mono = JetBrains_Mono({
 const SITE_URL = "https://karthik-manche.netlify.app";
 const isVercel = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "vercel";
 
-const TITLE = "Karthik Manche | Software Developer & Data Analyst";
+const TITLE = "Karthik Manche | Software Developer";
 const DESCRIPTION =
   "Portfolio of Karthik Manche, a Navi Mumbai based software developer building full-stack web apps with Next.js, Python automation and Power BI data dashboards.";
 

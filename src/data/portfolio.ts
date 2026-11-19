@@ -3,14 +3,13 @@ export const FIRST_NAME = "Karthik"
 export const INITIALS = "KM"
 export const TITLE = "Software Developer & Data Analyst"
 export const LOCATION = "Navi Mumbai, India"
-export const CITY = "Mumbai"
 export const TIME_ZONE = "Asia/Kolkata"
 
 export const EMAIL = "kartikmanche@gmail.com"
 export const PHONE = "+91 93244 06997"
 
-export const CV_PATH = "/Karthik-Manche-Resume.pdf"
-export const CV_FILENAME = "Karthik-Manche-Resume.pdf"
+export const CV_PATH = "/Karthik_resume.pdf"
+export const CV_FILENAME = "Karthik_resume.pdf"
 
 export const socials = {
   linkedin: "",

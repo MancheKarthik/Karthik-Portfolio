@@ -3,8 +3,8 @@
 import { useRef, useState } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { gsap, useGSAP, ScrollTrigger, ScrollSmoother, scrollToTarget, MOTION_OK } from "@/lib/gsap"
-import { CITY, EMAIL, navItems, socials } from "@/data/portfolio"
-import { LocalTime, isExternal, socialLinks } from "./socialLinks"
+import { EMAIL, navItems, socials } from "@/data/portfolio"
+import { VisitorClock, isExternal, socialLinks } from "./socialLinks"
 import { Logo } from "./Logo"
 import { Magnetic } from "./Magnetic"
 import { RollText } from "./RollText"
@@ -148,7 +148,7 @@ export function Nav({ ready }: { ready: boolean }) {
 
           <div className="site-nav__actions">
             <span className="nav-side site-nav__clock">
-              {CITY} <LocalTime />
+              <VisitorClock />
             </span>
             <div className="nav-side site-nav__cta-wrap">
               <Magnetic strength={0.3}>
@@ -227,7 +227,7 @@ export function Nav({ ready }: { ready: boolean }) {
               ))}
             </div>
             <span className="mobile-menu__clock">
-              {CITY} <LocalTime />
+              <VisitorClock />
             </span>
           </div>
         </div>
